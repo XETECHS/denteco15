@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="StockPickingListView.button_trip_generator">
+        <button type="button" class="btn btn-secondary o_button_trip_generator">
+            Generar Viaje de entrega
+        </button>
+    </t>
+
+    <t t-name="StockPickingAddDeliveryListView.button_add_delivery">
+        <button type="button" class="btn btn-primary o_button_add_delivery">
+            Agregar entrega(s)
+        </button>
+    </t>
+</templates>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="wizard_trip_generator_form_view" model="ir.ui.view">
+        <field name="name">Vista Formulario - Wizard Generador de Viaje</field>
+        <field name="model">delivery_logistic.trip_generator</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Generar Viaje">
+                <sheet>
+                    <group string="Configuración" name="config">
+                        <group>
+                            <field name="driver_id"/>
+                            <field name="vehicle_id"/>
+                        </group>
+                        <group>
+                            <field name="initial_date" readonly="1"/>
+                            <field name="route_id"/>
+                        </group>
+                    </group>
+
+                     <notebook name="notebook_picks">
+                         <page string="Entregas" name="picks">
+                             <group name="pickings" style="display: block; width: 100%;">
+                                  <field name="line_ids" nolabel="1">
+                                      <tree create="false">
+                                          <field name="name"/>
+                                          <field name="location_id"/>
+                                          <field name="location_dest_id"/>
+                                          <field name="partner_id"/>
+                                          <field name="scheduled_date"/>
+                                          <field name="origin"/>
+                                      </tree>
+                                  </field>
+                             </group>
+                         </page>
+                     </notebook>
+
+                    <footer name="buttons">
+                        <button name="create_trip" string="Crear" type="object" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-default" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

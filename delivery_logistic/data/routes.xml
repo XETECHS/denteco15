@@ -1,0 +1,21 @@
+<odoo>
+
+    <data>
+        <record id="route_one" model="delivery_logistic.route">
+           <field name="name">Ruta 1</field>
+        </record>
+
+         <record id="route_two" model="delivery_logistic.route">
+           <field name="name">Ruta 2</field>
+        </record>
+
+         <record id="route_three" model="delivery_logistic.route">
+           <field name="name">Ruta 3</field>
+        </record>
+
+         <record id="route_four" model="delivery_logistic.route">
+           <field name="name">Ruta 4</field>
+        </record>
+    </data>
+
+</odoo>

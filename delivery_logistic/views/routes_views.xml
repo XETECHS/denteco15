@@ -1,0 +1,29 @@
+<odoo>
+
+  <record model="ir.ui.view" id="tree_view_delivery_route">
+      <field name="name">Vista Listado - Rutas de entrega</field>
+      <field name="model">delivery_logistic.route</field>
+      <field name="arch" type="xml">
+          <tree string="Ruta">
+              <field name="name"/>
+          </tree>
+      </field>
+  </record>
+
+  <record model="ir.ui.view" id="form_view_delivery_route">
+      <field name="name">Vista Formulario - Rutas de entrega</field>
+      <field name="model">delivery_logistic.route</field>
+      <field name="arch" type="xml">
+          <form string="Ruta" create="false">
+              <sheet name="body_form_delivery_route">
+                  <group name="main">
+                      <group name="ref" style="display: block; width: 100%;">
+                          <field name="name"/>
+                      </group>
+                  </group>
+              </sheet>
+          </form>
+      </field>
+  </record>
+
+</odoo>

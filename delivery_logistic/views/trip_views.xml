@@ -1,0 +1,154 @@
+<odoo>
+
+  <record model="ir.ui.view" id="tree_view_delivery_trip">
+      <field name="name">Vista Listado - Viajes de entrega</field>
+      <field name="model">delivery_logistic.trip</field>
+      <field name="arch" type="xml">
+          <tree create="false" string="Viaje" js_class="trip_final_tree"
+                decoration-danger="has_full_returns">
+              <field name="name"/>
+              <field name="route_id"/>
+              <field name="driver_id"/>
+              <field name="vehicle_id"/>
+              <field name="initial_date"/>
+              <field name="final_date"/>
+              <field name="has_returns" invisible="1"/>
+              <field name="has_full_returns" invisible="1"/>
+              <field name="state"/>
+          </tree>
+      </field>
+  </record>
+
+  <record model="ir.ui.view" id="form_view_delivery_trip">
+      <field name="name">Vista Formulario - Viajes de entrega</field>
+      <field name="model">delivery_logistic.trip</field>
+      <field name="arch" type="xml">
+          <form string="Viaje" create="false">
+
+              <header name="header_form_delivery_trip">
+                  <button type="object" name="action_start_trip" icon="fa-hourglass-start"
+                          class="btn btn-primary" attrs="{'invisible': ['|', ('state', '!=', 'new'), ('has_full_returns', '=', True)]}"
+                          string="Iniciar viaje"/>
+                  <button type="object" name="action_singleton_final_complete_trip" icon="fa-hourglass-end"
+                          class="btn btn-primary" attrs="{'invisible': [('state', '!=', 'in_rute')]}"
+                          string="Terminado completo"/>
+                  <button type="object" name="action_singleton_final_incomplete_trip" icon="fa-hourglass-end"
+                          class="btn btn-secondary" attrs="{'invisible': [('state', '!=', 'in_rute')]}"
+                          string="Terminado incompleto"/>
+                  <button type="object" name="action_cancel" icon="fa-ban"
+                          class="btn btn-secondary" states="new,in_rute"
+                          string="Cancelar" groups="delivery_logistic.group_delivery_logistic_manager"
+                          confirm="Estás seguro que deseas anular el viaje de entrega? Esta acción no puede ser deshecha"/>
+                  <field name="state" widget="statusbar" statusbar_visible="new,in_rute,complete,final_incomplete"/>
+              </header>
+
+              <sheet name="body_form_delivery_trip">
+                  <div class="oe_button_box" name="smart_buttons" attrs="{'invisible': [('state', '!=', 'new')]}">
+                      <button name="action_add_deliveries" type="object"
+                          class="oe_stat_button" string="Agregar entregas"
+                          icon="fa-truck" style="border: 1px solid #ced4da;"/>
+                  </div>
+
+
+                  <group name="main">
+                      <group name="ref" style="display: block; width: 100%;">
+                          <h1 name="title">
+                              <field name="name" readonly="1"/>
+                          </h1>
+                      </group>
+
+                      <group name="config" style="display: block; width: 100%;">
+                          <group name="logistic">
+                              <field name="driver_id"/>
+                              <field name="vehicle_id"/>
+                              <field name="route_id" invisible="1"/>
+                              <field name="sale_order_ids" widget="many2many_tags" invisible="1"/>
+                          </group>
+
+                          <group name="dates">
+                              <field name="can_edit_dates" invisible="1"/>
+                              <field name="initial_date"
+                                     attrs="{'readonly': [('can_edit_dates', '=', False)]}"/>
+                              <field name="final_date"
+                                     attrs="{'readonly': [('can_edit_dates', '=', False)]}"/>
+                              <field name="has_returns"/>
+                              <field name="has_full_returns" invisible="1"/>
+                          </group>
+                      </group>
+                  </group>
+
+                  <notebook name="notebook_picks_and_returns">
+                      <page string="Entregas" name="picks">
+                          <button type="object" name="unlink_from_trip"
+                                  class="btn btn-secondary"
+                                  attrs="{'invisible': ['|', ('state', 'in', ['complete', 'cancel']), ('has_full_returns', '=', True)]}">
+                              Eliminar Entrega(s)
+                          </button>
+                          <group name="pickings" style="display: block; width: 100%;">
+                              <field name="picking_ids" force_save="1"
+                                     nolabel="1" mode="tree"
+                                     context="{'tree_view_ref':'delivery_logistic.vpicktree_delivery_logistic',
+                                     'form_view_ref': 'stock.view_picking_form'}"/>
+                          </group>
+                      </page>
+
+                      <page string="Devoluciones" name="returns">
+                          <group name="return_pickings" style="display: block; width: 100%;">
+                              <field name="return_picking_ids" force_save="1" nolabel="1"
+                                     context="{'form_view_ref': 'stock.view_picking_form'}">
+                                  <tree create="false" delete="false">
+                                      <field name="name"/>
+                                      <field name="location_id" options="{'no_create': True}" groups="stock.group_stock_multi_locations"/>
+                                      <field name="location_dest_id" options="{'no_create': True}" groups="stock.group_stock_multi_locations"/>
+                                      <field name="partner_id"/>
+                                      <field name="user_id" invisible="1"/>
+                                      <field name="date" invisible="1"/>
+                                      <field name="scheduled_date"/>
+                                      <field name="origin"/>
+                                      <field name="group_id" invisible="1"/>
+                                      <field name="backorder_id" invisible="1"/>
+                                      <field name="state" invisible="1"/>
+                                      <field name="priority" invisible="1"/>
+                                      <field name="picking_type_id" invisible="1"/>
+                                      <field name="company_id" groups="base.group_multi_company" invisible="1"/>
+                                      <field name="activity_exception_decoration" widget="activity_exception" invisible="1"/>
+                                  </tree>
+                              </field>
+                          </group>
+                      </page>
+                  </notebook>
+              </sheet>
+
+              <div class="oe_chatter" name="chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="activity_ids" widget="mail_activity"/>
+                  <field name="message_ids" widget="mail_thread"/>
+              </div>
+          </form>
+      </field>
+  </record>
+
+  <record id="search_view_delivery_trip" model="ir.ui.view">
+      <field name="name">Vista Búsqueda - Viajes de entrega</field>
+      <field name="model">delivery_logistic.trip</field>
+      <field name="arch" type="xml">
+         <search string="Búsqueda de Viajes de entrega">
+            <field name="name" string="Viaje" filter_domain="[
+                '|', '|', '|',
+                ('name', 'ilike', self), ('driver_id', 'ilike', self), ('vehicle_id', 'ilike', self), ('route_id', 'ilike', self)]"/>
+            <separator/>
+            <filter string="Nuevos" name="new" domain="[('state', '=', 'new')]" help="Todos los viajes nuevos"/>
+            <filter string="Cancelados" name="cancel" domain="[('state', '=', 'cancel')]" help="Todos los viajes cancelados"/>
+            <filter string="Terminados" name="complete" domain="[('state', '=', 'complete')]" help="Todos los viajes terminados"/>
+            <filter string="Incompletos" name="incomplete" domain="[('state', '=', 'final_incomplete')]" help="Todos los viajes finalizados incompletos"/>
+            <filter string="Con Devoluciones" name="has_returns" domain="[('has_returns', '=', True)]" help="Todos los viajes con devoluciones"/>
+            <separator/>
+            <group expand="0" string="Agrupado por">
+                <filter string="Rutas" name="group_by_route" domain="[]" context="{'group_by': 'route_id'}"/>
+                <filter string="Pilotos" name="group_by_driver" domain="[]" context="{'group_by': 'driver_id'}"/>
+                <filter string="Vehículos" name="group_by_vehicle" domain="[]" context="{'group_by': 'vehicle_id'}"/>
+            </group>
+          </search>
+      </field>
+  </record>
+</odoo>

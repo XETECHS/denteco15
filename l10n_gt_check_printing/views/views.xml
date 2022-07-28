@@ -1,0 +1,16 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="journal_check_format">
+      <field name="name">journal_check_format</field>
+      <field name="model">account.journal</field>
+      <field name="inherit_id" ref="account_check_printing.view_account_journal_form_inherited"/>
+      <field name="arch" type="xml">
+        <field name = "check_manual_sequencing" position="after">
+              <field name="account_check_printing_layout"/>
+              <field name="cheque_formate_id" attrs="{'invisible':[('account_check_printing_layout', '!=', 'action_print_check_voucher')]}"/>
+          </field>
+      </field>
+    </record>
+  </data>
+</odoo>

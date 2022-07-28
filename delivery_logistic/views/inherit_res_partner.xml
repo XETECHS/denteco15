@@ -1,0 +1,17 @@
+<odoo>
+
+    <record id="inherit_form_view_res_partner_delivery_logistic" model="ir.ui.view">
+        <field name="name">Herencia de vista Formulario de Contacto para logística</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="inside">
+                <group string="Logística" name="delivery_logistic">
+                    <field name="route_id" attrs="{'invisible': [('is_driver','=', True)]}"/>
+				    <field name="is_driver"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

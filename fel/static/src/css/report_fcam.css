@@ -1,0 +1,102 @@
+.factura_logo {
+  max-height: 70px;
+}
+.div_logo {
+  height: 100px;
+}
+.qr {
+  max-height: 75px;
+  padding-top: 1px;
+}
+.fac_t_letra_peq {
+  font-size: 11px;
+}
+.fac_t_letra_fcam {
+  font-size: 8px;
+}
+.fac_t_letra_med {
+  font-size: 12px;
+}
+.fac_t_letra_gen {
+  font-size: 13px;
+}
+.fac_t_letra_gr {
+  font-size: 17px;
+}
+.factura_logo {
+  max-height: 70px;
+}
+.encabezado_factura {
+  padding: 0px !important;
+  display: inline-block;
+}
+.tabla_factura {
+  position: absolute;
+  height: 555px;
+  width: 887px;
+  top: 368px;
+}
+.content_factura {
+  position: relative;
+  /* overflow: hidden; */
+}
+.tabla_footer {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.table th, .table td {
+  border: 1px !important;
+}
+.fixed-table-container {
+  border:0px !important;
+}
+
+
+
+
+/* ============= ====================== */
+
+.header-relativo {
+  position: relative !important;
+  
+}
+
+.container {
+  background-color: transparent !important;
+}
+
+.separador-reporte {
+  position: absolute !important;
+  /* border: 1px solid black !important; */
+  /* background-color: black !important; */
+  background-color: transparent;
+  z-index: 1100 !important;
+  height: 517px;
+  width: 1px;
+  top: 378px;
+}
+
+.marca-agua {
+  position:absolute;
+  opacity:0.25;
+  z-index:1000;
+  transform:rotate(300deg);
+  -webkit-transform:rotate(300deg);
+  width:64%;
+  height:410px;
+  top: 350px;
+  background-color: transparent !important;
+}
+
+.marca-agua > p {
+  font-size:70px;
+  color:grey;
+  padding-top: 50%;
+  padding-left: 15%;
+  background-color: transparent !important;
+}
+
+.page > div.container {
+  margin: 0 !important;
+  padding: 0 !important
+}

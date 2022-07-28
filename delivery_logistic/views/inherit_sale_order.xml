@@ -1,0 +1,50 @@
+<odoo>
+
+    <record id="view_quotation_tree" model="ir.ui.view">
+        <field name="name">Herencia de vista listado de Pedido de Venta para logística</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <field name="commitment_date" position="attributes">
+                <attribute name="string">Fecha de preparación</attribute>
+            </field>
+
+            <field name="invoice_status" position="after">
+                <field name="trip_status"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="inherit_form_view_sale_order_delivery_logistic" model="ir.ui.view">
+        <field name="name">Herencia de vista Formulario de Pedido de Venta para logística</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_term_id" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+
+            <field name="user_id" position="replace"/>
+
+            <field name="payment_term_id" position="after">
+                <field name="can_edit_delivery_date" invisible="1"/>
+                <field name="delivery_date"
+                       attrs="{'readonly': [('state', '!=', 'draft'), ('can_edit_delivery_date', '=', False)]}"/>
+                <field name="carrier_id" readonly="1"/>
+                <field name="route_id"/>
+                <label for="trip_ids" string="Viaje de entrega"/>
+                <div class="o_row">
+                  <field name="trip_ids" widget="many2many_tags"/> <span class="text-muted">Estado: <field name="trip_status"/></span>
+                </div>
+                <field name="delivery_comment" />
+                <field name="user_id" />
+            </field>
+
+
+            <xpath expr="//label[@for='commitment_date']" position="attributes">
+                <attribute name="string">Fecha de preparación</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <template id="fel.invoice_lanueva_ticket">
+      <t t-call="web.basic_layout">
+
+        <div class="page">
+          <link rel="stylesheet" href="/fel/static/src/css/report_ticket.css" />
+          <div class="container">
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_gen bordes_encabezado">
+                <t t-if="o.fel_setting_id">
+                  <strong>
+                    <span t-esc="o.fel_setting_id.nombre_comercial.upper()" />
+                  </strong>
+                  <br />
+                  <span t-esc="o.company_id.company_registry" />
+                </t>
+                <br />
+                <span t-field="o.fel_setting_id.emisor.street" />
+                <br />
+                <t t-if="o.fel_setting_id.emisor.city">
+                  <span t-field="o.fel_setting_id.emisor.city" />
+                  ,
+                </t>
+                <span t-field="o.fel_setting_id.emisor.state_id.name" />
+                <br />
+                <span t-esc="o.fel_setting_id.emisor.name" />
+                <br />
+                <span>
+                  NIT:
+                  <t t-esc="o.company_id.vat" />
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_gen bordes_encabezado">
+                DOCUMENTO TRIBUTARIO ELECTRONICO
+                <br />
+                <strong>
+                  <span t-field="o.journal_id.tipo_documento" />
+                  <![CDATA[&nbsp;]]>
+                  <![CDATA[&nbsp;]]>
+                  Electrónica
+                </strong>
+                <br />
+                <span class="font-weight: bold">No. AUTORIZACIÓN</span>
+                <br />
+                <t t-esc="o.fel_firma" />
+                <br />
+                <span class="font-weight: bold">SERIE:</span>
+                <span t-field="o.fac_serie" />
+                <br />
+                <span class="font-weight: bold">NÚMERO:</span>
+                <span t-field="o.fac_numero" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_gen">
+                <t t-if="o.fel_setting_id">
+                  No. interno:
+                  <span t-esc="o.name" />
+                  <br />
+                  <t t-if="o.journal_id.tipo_documento in ('NABN','NCRE')">
+                    No. interno doc origen:
+                    <span t-esc="o.reversed_entry_id.name" />
+                  </t>
+                  <t t-if="o.journal_id.tipo_documento in ('NDEB')">
+                    No. interno doc origen:
+                    <span t-esc="o.fel_factura_referencia_id.name" />
+                  </t>
+                </t>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_gen bordes_encabezado">
+                <t t-set="fecha" t-value="o.get_fecha()" />
+                <span class="font-weight: bold">FECHA: </span>
+                <span t-esc="fecha['dia']" />
+                /
+                <span t-esc="fecha['mes']" />
+                /
+                <span t-esc="fecha['año']" />
+                <br />
+                <span class="font-weight: bold">ATENDIO: </span>
+                <span t-field="o.create_uid.name" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <t t-if="o.fel_url">
+                  <img t-if="o.generate_qr()" t-att-src="'data:image/png;base64,%s' % to_text(o.generate_qr())" class="qr" />
+                </t>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-left fac_t_letra_gen bordes_encabezado">
+                NOMBRE:
+                <span t-field="o.partner_id.name" />
+                <br />
+                DIRECCIÓN:
+                <span t-field="o.partner_id.display_street" />
+                <br />
+                NIT:
+                <t t-if="o.partner_id.vat">
+                  <span t-field="o.partner_id.vat" />
+                </t>
+                <t t-if="not o.partner_id.vat">
+                  <span>C/F</span>
+                </t>
+              </div>
+            </div>
+          </div>
+
+          <link rel="stylesheet" href="/fel/static/src/css/report_ticket.css" />
+          <div class="container">
+            <t t-foreach="o.detalle_factura()" t-as="l">
+              <div class="row">
+                <div class="col-12 text-left fac_t_letra_gen bordes_detalle">
+                  <span t-esc="l['name']" />
+                </div>
+              </div>
+
+              <t t-if="l['quantity']">
+
+                <!-- <div class="row">
+                  <div class="col-4 text-right fac_t_letra_gen"></div>
+                  <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                    <span t-esc="l['precio_sin_descuento']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}' />
+                  </div>
+                </div> -->
+
+                <!-- <t t-if="float(l['descuento'])>0">
+                  <div class="row">
+                    <div class="col-4 text-right fac_t_letra_gen"></div>
+                    <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                      <span t-esc="'Descuento:'" />
+                    </div>
+                    <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                      <span t-esc="str(l['discount'])+'%'" />
+                    </div>
+                  </div>
+                </t> -->
+
+
+                <div class="row">
+                  <div class="col-4 text-right fac_t_letra_gen"></div>
+                  <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                    <span t-esc="l['quantity']" />
+                    x
+                    <span t-esc="l['precio_con_descuento']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}' />
+                  </div>
+                  <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                    <span t-esc="l['total_con_descuento']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}' />
+                  </div>
+                </div>
+              </t>
+            </t>
+
+            <t t-set="total" t-value="o.totales()" />
+            <div class="row">
+              <div class="col-12 text-right fac_t_letra_gen bordes_detalle">
+                <span class="">TOTAL : </span>
+                <span t-esc="total['gran_total_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}' />
+                <br />
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 text-right fac_t_letra_gen"></div>
+              <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                Forma de Pago
+              </div>
+              <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                Monto
+              </div>
+            </div>
+
+            <t t-set="monto_cambio" t-value="False"></t>
+
+            <t t-foreach="o.get_pos_formas_de_pago()" t-as="pago">
+              <t t-if="pago.amount >= 0">
+                <div class="row">
+                  <div class="col-4 text-right fac_t_letra_gen"></div>
+                  <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                    <span t-esc="pago.payment_method_id.name" />
+                  </div>
+                  <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                    <span t-esc="pago.amount" t-options='{"widget": "monetary", "display_currency": pago.currency_id, "precision": 2}' />
+                  </div>
+                </div>
+              </t>
+              <t t-else="">
+                <t t-set="monto_cambio" t-value="abs(pago.amount)"></t>
+              </t>
+            </t>
+
+            <t t-if="monto_cambio">
+              <br />
+              <br />
+              <div class="row">
+                <div class="col-4 text-right fac_t_letra_gen"></div>
+                <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                  CAMBIO
+                </div>
+                <div class="col-4 text-right fac_t_letra_gen bordes_detalle">
+                  <span t-esc="monto_cambio" t-options='{"widget": "monetary", "display_currency": pago.currency_id, "precision": 2}' />
+                </div>
+              </div>
+            </t>
+
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_gen">
+                <t t-foreach="o.journal_id.fel_frases_ids" t-as="frase">
+                  <span t-esc="frase.fel_escenario.texto.upper()" />
+                  <br />
+                </t>
+              </div>
+            </div>
+            <div class="row">
+              <t t-if="o.journal_id.tipo_documento in ('NDEB','NCRE')">
+                <t t-set="informacion" t-value="o.get_info_document()" />
+                <div class="col-12 text-center fac_t_letra_gen">
+                  <span class="font-weight: bold">--COMPLEMENTO NOTA DE CRÉDITO--</span>
+                  <br />
+                  Regimen:
+                  <t t-esc="informacion['regimen']" />
+                  <br />
+                  Fecha emision doc origen:
+                  <t t-esc="informacion['fecha_emision']" />
+                  <br />
+                  Numero autorizacion doc origen:
+                  <t t-esc="informacion['numero_autorizacion']" />
+                  <br />
+                  Serie doc origen:
+                  <t t-esc="informacion['serie_origen']" />
+                  <br />
+                  No doc origen:
+                  <t t-esc="informacion['no_origen']" />
+                  <br />
+                  Motivo Ajuste:
+                  <t t-esc="informacion['motivo']" />
+                </div>
+              </t>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_gen">
+                <span class="font-weight: bold">FUE UN PLACER ATENDERLE</span>
+                <br />
+                <span class="font-weight: bold">ESPERAMOS QUE VUELVA</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_gen">
+                <span class="font-weight: bold">--------DATOS DEL CERTIFICADOR--------</span>
+                <br />
+                <span class="font-weight: bold">NIT: </span>
+                <t t-esc="o.fel_setting_id.proveedor_id.vat" />
+                <br />
+                <t t-esc="o.fel_setting_id.proveedor_id.name" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </t>
+    </template>
+
+    <template id="fel.invoice_template_ticket">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+          <t t-call="fel.invoice_lanueva_ticket" />
+        </t>
+      </t>
+    </template>
+
+    <!-- QWeb Reports Factura tipo ticket-->
+    <record id="paper_ticket" model="report.paperformat">
+      <field name="name">PaperFormat ticket</field>
+      <field name="default" eval="True" />
+      <field name="format">custom</field>
+      <field name="page_height">315</field>
+      <field name="page_width">80</field>
+      <field name="orientation">Portrait</field>
+      <field name="margin_top">1</field>
+      <field name="margin_bottom">1</field>
+      <field name="margin_left">0.00</field>
+      <field name="margin_right">0.00</field>
+      <field name="header_line" eval="False" />
+      <field name="header_spacing">25</field>
+      <field name="dpi">90</field>
+    </record>
+
+    <record id="reporte_factura_ticket" model="ir.actions.report">
+      <field name="name">Factura ticket</field>
+      <field name="model">account.move</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">fel.invoice_template_ticket</field>
+      <field name="report_file">fel.invoice_template_ticket</field>
+      <field name="binding_type">report</field>
+      <field name="print_report_name">(object.name)</field>
+      <field name="paperformat_id" ref="paper_ticket" />
+    </record>
+  </data>
+</odoo>

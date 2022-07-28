@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+  <record id="papel_etiqueta" model="report.paperformat">
+      <field name="name">Etiqueta</field>
+      <field name="default" eval="True"/>
+      <field name="format">custom</field>
+      <field name="page_height">80</field>
+      <field name="page_width">80</field>
+      <field name="orientation">Portrait</field>
+      <field name="margin_top">1</field>
+      <field name="margin_bottom">1</field>
+      <field name="margin_left">1</field>
+      <field name="margin_right">1</field>
+      <field name="header_line" eval="False"/>
+      <field name="header_spacing">39</field>
+      <field name="dpi">90</field>
+    </record>
+    <record id="action_report_historico" model="ir.actions.report">
+            <field name="name">Guia de recoleccion</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">denteco_so_report.etiqueta_denteco</field>
+            <field name="report_file">denteco_so_report.etiqueta_denteco</field>
+            <field name="print_report_name">'Etiqueta %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="denteco_so_report.papel_etiqueta"/>
+      </record>
+
+	</data>
+</odoo>

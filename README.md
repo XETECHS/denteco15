@@ -1,1 +1,1 @@
-# denteco15
+# DENTECO

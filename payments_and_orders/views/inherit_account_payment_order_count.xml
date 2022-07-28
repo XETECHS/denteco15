@@ -1,0 +1,15 @@
+<odoo>
+    <record model="ir.ui.view" id="account_payment_order_count_inherit_form">
+        <field name="name">Account Payment Order Count Inherit Form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/div[1]/button[2][@name='button_invoices']" position="after">
+                <button class="oe_stat_button" name="action_orders" type="object" icon="fa-bars"
+                        attrs="{'invisible':[('order_count','=', 0)]}">
+                    <field name="order_count" widget="statinfo" string="Pedido"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

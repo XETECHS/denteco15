@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <report
+            id="action_report_trip"
+            model="delivery_logistic.trip"
+            string="Viaje de entregas"
+            report_type="qweb-pdf"
+            name="delivery_logistic.report_trip"
+            file="delivery_logistic.report_trip"
+            print_report_name="'Viaje - %s' % (object.name)"
+        />
+
+</odoo>

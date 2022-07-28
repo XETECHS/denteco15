@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+manager_l10n_gt_sat.access_product_dai,manager__product_dai,l10n_gt_sat.model_product_dai,account.group_account_manager,1,1,1,1
+l10n_gt_sat.manager_res_state_municipio,manager_res_state_municipio,l10n_gt_sat.model_res_state_municipio,account.group_account_manager,1,1,1,1
+
+l10n_gt_sat.access_product_dai,access_product_dai,l10n_gt_sat.model_product_dai,base.group_user,1,0,1,0
+
+l10n_gt_sat.access_l10n_gt_sat_librofiscal_report,access_l10n_gt_sat_librofiscal_report,l10n_gt_sat.model_l10n_gt_sat_librofiscal_report,base.group_user,1,1,1,1
+l10n_gt_sat.access_report_l10n_gt_sat_librofiscal,access_report_l10n_gt_sat_librofiscal,l10n_gt_sat.model_report_l10n_gt_sat_librofiscal,base.group_user,1,1,1,1
+l10n_gt_sat.access_res_state_municipio,access_res_state_municipio,l10n_gt_sat.model_res_state_municipio,base.group_user,1,0,0,0
+l10n_gt_sat.access_libro_contable_report,access_libro_contable_report,l10n_gt_sat.model_libro_contable_report,base.group_user,1,1,1,1

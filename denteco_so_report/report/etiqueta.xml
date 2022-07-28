@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="etiqueta_denteco">
+        <t t-call="web.basic_layout">
+        <t t-foreach="docs" t-as="o">
+            <t>
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-8">
+                            <table class="table table-condensed" style="font-size:12px; border-bottom: 0px solid white !important;width: 3in;">
+                                <tr>
+                                  <th style="text-align: center;">
+                                    <h4><strong><b>Guía de recolección</b></strong></h4>
+                                  </th>
+                                </tr>
+                                <tr>
+                                <td style="text-align: center; vertical-align: middle;" class="col-5">
+                                        <div t-field="o.get_picking().name" t-options="{'widget': 'barcode', 'width': 650, 'height': 170, 'img_style': 'width:100%;height:30%;'}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                   <td>
+                                        <strong><b>Pedido:</b><span t-field="o.name"/></strong><br/>
+                                        <strong><b>Cliente:</b><span t-field="o.partner_id.name"/></strong><br/>
+                                        <strong><b>Ruta:</b><span t-field="o.get_picking().route_id.name"/></strong><br/>
+                                        <strong><b>Direccion:</b><span t-field="o.partner_shipping_id.street"/></strong><br/>
+                                        <strong>&#160;&#160;<spant t-field="o.partner_shipping_id.stree2" t-if="o.partner_shipping_id.street2"/>></strong>
+                                        <strong><b>Fecha:</b><span t-field="o.delivery_date"/></strong>
+                                    </td> 
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+    </template>
+</odoo>

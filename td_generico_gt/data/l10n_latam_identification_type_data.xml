@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+    <record model='l10n_latam.identification.type' id='it_cui'>
+        <field name='name'>CUI</field>
+        <field name='description'>CUI</field>
+        <field name='country_id' ref='base.gt'/>
+        <field name='sequence'>10</field>
+    </record>
+    <record model='l10n_latam.identification.type' id='it_dpi'>
+        <field name='name'>DPI</field>
+        <field name='description'>Documento Personal de Identidad</field>
+        <field name='country_id' ref='base.gt'/>
+        <field name='sequence'>20</field>
+    </record>
+    <record model='l10n_latam.identification.type' id='it_nit'>
+        <field name='name'>NIT</field>
+        <field name='description'>NIT</field>
+        <field name='country_id' ref='base.gt'/>
+        <field name='is_vat' eval='True'/>
+        <field name='sequence'>30</field>
+    </record>
+    <record model='l10n_latam.identification.type' id='it_passport'>
+        <field name='name'>Pasaporte</field>
+        <field name='description'>Pasaporte</field>
+        <field name='country_id' ref='base.gt'/>
+        <field name='sequence'>40</field>
+    </record>
+</data>
+<data noupdate="True">
+    <record model='l10n_latam.identification.type' id='it_cui'>
+        <field name='active' eval='False'/>
+    </record>
+    <record model='l10n_latam.identification.type' id='it_dpi'>
+        <field name='active' eval='False'/>
+    </record>
+    <record model='l10n_latam.identification.type' id='it_nit'>
+        <field name='active' eval='False'/>
+    </record>
+    <record model='l10n_latam.identification.type' id='it_passport'>
+        <field name='active' eval='False'/>
+    </record>
+</data>
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+    <record model="ir.ui.view" id="sale_order_receive_payment_inherit_form">
+        <field name="name">Sale Order Receive Payment Inherit Form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/header/button[@name='action_cancel']" position="after">
+                <button name="action_receive_payment" type="object" string="Recibir Pago"
+                        class="oe_highlight"  attrs="{'invisible': [('invoice_status', 'in', ['invoiced', 'no'])]}"/>
+            </xpath>
+
+            <xpath expr="/form/sheet/div/button[@name='action_view_invoice']" position="after">
+                <button name="action_payments" type="object" class="oe_stat_button"
+                        icon="fa-money" attrs="{'invisible': [('payment_count', '=', 0)]}">
+                    <field name="payment_count" widget="statinfo" string="Pago(s)"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

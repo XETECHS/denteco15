@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle 
+ -->
+<odoo>
+    <template id="report_print_cheque_template">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <style>
+                        .rotate {
+                            -webkit-transform: rotate(-45deg);
+                            -moz-transform: rotate(-45deg);
+                            -ms-transform: rotate(-45deg);
+                            -o-transform: rotate(-45deg);
+                            border-top:1px solid black;
+                            border-bottom:1px solid black;
+                        }
+                        .standard {
+                            position: static;
+                        }
+                        .custom_account_entries {
+                            position: absolute;
+
+                        }
+                    </style>
+
+                    <div class="row" t-attf-style="font-size:#{o.cheque_formate_id.font_size_check}px;color:#{o.cheque_formate_id.color};};">
+                        <!-- Print Fecha -->
+                        <t t-if="o.cheque_formate_id.is_date">
+                            <t t-set="date" t-value="get_date(o.payment_date)" />
+                            <t t-if="o.cheque_formate_id.date_formate == 'dd_mm'">
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.gt_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    Guatemala
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.f_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[2][0]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.s_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[2][1]"/> <span style="margin-left:3px" t-esc="o.cheque_formate_id.date_seprator"/>
+                                </div>
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.t_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[1][0]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.fo_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[1][1]"/> <span style="margin-left:3px" t-esc="o.cheque_formate_id.date_seprator"/>
+                                </div>
+                            </t>
+                            <t t-if="o.cheque_formate_id.date_formate == 'mm_dd'">
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.gt_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    Guatemala
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.f_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[1][0]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.s_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[1][1]"/> <span style="margin-left:3px" t-esc="o.cheque_formate_id.date_seprator"/>
+                                </div>
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.t_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[2][0]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.fo_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[2][1]"/> <span style="margin-left:3px" t-esc="o.cheque_formate_id.date_seprator"/>
+                                </div>
+                            </t>
+                            <t t-if="o.cheque_formate_id.year_formate == 'yy'">
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.fi_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[0][2]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.si_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[0][3]"/>
+                                </div>
+
+                            </t>
+                            <t t-if="o.cheque_formate_id.year_formate == 'yyyy'">
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.fi_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[0][0]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.si_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[0][1]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.se_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[0][2]"/>
+                                </div>
+
+                                <div t-attf-style="margin-left:#{o.cheque_formate_id.e_d_m_left}px;margin-top:#{o.cheque_formate_id.date_m_top}px;position: absolute;};">
+                                    <span t-esc="date[0][3]"/>
+                                </div>
+                            </t>
+                        </t>
+
+                        <!-- Print Partner Name in Cheque -->
+                        <t t-if="o.cheque_formate_id.is_partner">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.partner_m_left}px;margin-top:#{o.cheque_formate_id.partner_m_top}px;position: absolute;};" class="col-8">
+                                <t t-if="o.cheque_formate_id.is_partner_bold">
+                                    <span t-field="o.name_to"/>
+                                    <!--<span style="font-weight:bold" t-esc="get_partner_name(o,o.name_to)"/>-->
+                                    <!--<span style="font-weight:bold" t-esc="get_partner_name(o,o.partner_id.name)"/>-->
+
+                                </t>
+                                <t t-if="not o.cheque_formate_id.is_partner_bold">
+                                    <span t-field="o.name_to"/>
+                                    <!--<span t-esc="get_partner_name(o,o.name_to)"/>-->
+                                    <!--<span t-esc="get_partner_name(o,o.partner_id.name)"/>-->
+                                </t>
+
+                            </div>
+                        </t>
+
+                        <!-- Print ACC/PAY -->
+                        <t t-if="o.cheque_formate_id.is_acc_pay">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.acc_pay_m_left}px;margin-top:#{o.cheque_formate_id.acc_pay_m_top}px;position: absolute;};">
+                                <div class='rotate text-center' style="width:60px;font-size:12px">
+                                    A/C PAY
+                                </div>
+                            </div>
+                        </t>
+
+                        <!-- Print Amount in Digit In Cheque -->
+                        <t t-if="o.cheque_formate_id.is_amount">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.amt_m_left}px;margin-top:#{o.cheque_formate_id.amt_m_top}px;position: absolute;};">
+                                <t t-if="o.cheque_formate_id.is_star">
+                                    ***
+                                </t>
+                                <t t-if="o.cheque_formate_id.is_currency">
+                                    <span t-field="o.amount" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </t>
+
+                                <t t-if="not o.cheque_formate_id.is_currency">
+<!--                                Mejora del 19.05.2021 para que monto sea separado en miles por coma.-->
+                                    <span t-esc="'{:,.2f}'.format(o.amount)"/>
+                                </t>
+
+                                <t t-if="o.cheque_formate_id.is_star">
+                                    ***
+                                </t>
+
+                            </div>
+                        </t>
+
+                        <!-- Print Amount in Word In Cheque -->
+                        <t t-if="o.cheque_formate_id.is_amount_word">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.amt_w_m_left}px;margin-top:#{o.cheque_formate_id.amt_w_m_top}px;position: absolute;};" class="col-8">
+                                <t t-if="o.cheque_formate_id.is_word_bold">
+                                    <span style="font-weight:bold" t-esc="amount_word(o)[0]"/>
+                                </t>
+                                <t t-if="not o.cheque_formate_id.is_word_bold">
+                                    <span t-esc="amount_word(o)[0]"/>
+                                </t>
+                            </div>
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.amt_w_s_m_left}px;margin-top:#{o.cheque_formate_id.amt_w_s_m_top}px;position: absolute;};" class="col-8">
+                                <t t-if="o.cheque_formate_id.is_word_bold">
+                                    <span style="font-weight:bold" t-esc="amount_word(o)[1]"/>
+                                </t>
+                                <t t-if="not o.cheque_formate_id.is_word_bold">
+                                    <span t-esc="amount_word(o)[1]"/>
+                                </t>
+                            </div>
+                        </t>
+
+                        <!-- Print No negociable -->
+                        <t t-if="o.cheque_formate_id.is_non_negotiable">
+                            <div colspan="8" t-attf-style="font-size:#{o.cheque_formate_id.font_size_check}px;margin-left:#{o.cheque_formate_id.non_n_margin_left}px;margin-top:#{o.cheque_formate_id.non_n_margin_top}px;position: absolute;};">
+                                No Negociable
+                            </div>
+                        </t>
+
+                        <!-- Print Company -->
+                        <t t-if="o.cheque_formate_id.is_company">
+                            <div colspan="8" t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;margin-left:#{o.cheque_formate_id.c_margin_left}px;margin-top:#{o.cheque_formate_id.c_margin_top}px;position: absolute;};">
+                                Compañía: <span t-esc="o.company_id.legal_name"/>
+                            </div>
+                        </t>
+
+                        <!-- Print No. Cheque -->
+                        <t t-if="o.cheque_formate_id.is_cheque_no">
+                            <div colspan="8" t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;margin-left:#{o.cheque_formate_id.cheque_margin_left}px;margin-top:#{o.cheque_formate_id.cheque_margin_top}px;position: absolute;};">
+                                Número de Cheque: <span t-esc="o.check_number"/>
+                            </div>
+                        </t>
+
+                        <!-- Print Note -->
+                        <t t-if="o.cheque_formate_id.is_free_one and o.text_free">
+                            <div colspan="8" t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;margin-left:#{o.cheque_formate_id.f_one_margin_left}px;margin-top:#{o.cheque_formate_id.f_one_margin_top}px;position: absolute;};">
+                                Descripción: <span t-esc="o.text_free"/>
+                            </div>
+                        </t>
+
+                        <!-- Print Cicular -->
+                        <t t-if="o.cheque_formate_id.is_communication and o.communication">
+                            <div colspan="8" t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;margin-left:#{o.cheque_formate_id.f_two_margin_left}px;margin-top:#{o.cheque_formate_id.f_two_margin_top}px;position: absolute;};">
+                                Circular: <span t-esc="o.communication"/>
+                            </div>
+                        </t>
+
+                        <!-- Print Pie de Page -->
+                        <t t-if="o.cheque_formate_id.is_stub">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.stub_margin_left}px;margin-top:#{o.cheque_formate_id.stub_margin_top}px;position: absolute;" class="col-12">
+                                <table class="table table-condensed" style="width:95%" >
+                                    <t t-if="o.check_number">
+                                    <tr t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;">
+                                        <td colspan="4" class="text-right" style="border:1px solid #FFF">
+                                            Número de Cheque: <span t-field="o.check_number"/>
+                                        </td>
+                                    </tr>
+                                    </t>
+                                    <tr t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;">
+                                        <td colspan="2" class="text-center" style="border:1px solid #FFF">
+                                            <!--<span t-field="o.partner_id.name"/>-->
+                                            <span t-field="o.name_to"/>
+                                        </td>
+                                        <td colspan="2" class="text-center" style="border:1px solid #FFF">
+                                            Fecha: <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%m-%d-%Y')"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;">
+                                        <th style="border-bottom:1px solid #000">Fecha</th>
+                                        <th style="border-bottom:1px solid #000">Tipo</th>
+                                        <th style="border-bottom:1px solid #000">Referencia</th>
+                                        <th style="border-bottom:1px solid #000" class="text-right">Pago</th>
+                                    </tr>
+                                    <tbody class="sale_tbody" t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;">
+                                        <tr>
+                                            <td>
+                                               <span t-field="o.payment_date"/>
+                                            </td>
+
+                                            <td>
+                                               <span t-field="o.payment_type"/>
+                                            </td>
+
+                                            <td>
+                                               <span t-field="o.communication"/>
+                                            </td>
+
+                                            <td class="text-right">
+                                               <span t-field="o.amount"
+                                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+
+                        <!-- Print Primera Firma -->
+                        <t t-if="o.cheque_formate_id.is_f_line_sig">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.f_sig_m_left}px;margin-top:#{o.cheque_formate_id.f_sig_m_top}px;position: absolute;};">
+                                ____________________________________________________
+                            </div>
+                            <div t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;margin-left:#{o.cheque_formate_id.f_sig_m_left + 120}px;margin-top:#{o.cheque_formate_id.f_sig_m_top + 20}px;position: absolute;};">
+                               <span t-field="o.create_uid.name"/>
+                            </div>
+                        </t>
+
+                        <!-- Print Segunda Firma -->
+                        <t t-if="o.cheque_formate_id.is_s_line_sig">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.s_sig_m_left}px;margin-top:#{o.cheque_formate_id.s_sig_m_top}px;position: absolute;};">
+                                ____________________________________________________
+                            </div>
+                            <div t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;margin-left:#{o.cheque_formate_id.s_sig_m_left + 120}px;margin-top:#{o.cheque_formate_id.s_sig_m_top + 20}px;position: absolute;};">
+                               Recibí conforme
+                            </div>
+                        </t>
+
+                        <!-- Print Diario y Cuentas -->
+                        <t t-if="o.cheque_formate_id.print_journal">
+                            <div t-attf-style="margin-left:#{o.cheque_formate_id.journal_margin_left}px;margin-top:#{o.cheque_formate_id.journal_margin_top}px;position: absolute;};" class="col-10">
+                                <t t-set="debit_total" t-value="sum([l.debit for l in o.move_line_ids])"/>
+                                <t t-set="credit_total" t-value="sum([l.credit for l in o.move_line_ids])"/>
+                                <table class="table table-condensed" style="width:100%"
+                                        t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                    <thead t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;"
+                                           t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                        <tr>
+                                            <th>Cuenta: <t t-esc="o.journal_id.name"/></th>
+                                        </tr>
+
+                                        <tr>
+                                            <th t-attf-style="margin-left:#{o.cheque_formate_id.date_margin_left}px;margin-top:#{o.cheque_formate_id.date_title_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                                Fecha
+                                            </th>
+                                            <th t-attf-style="margin-left:#{o.cheque_formate_id.account_margin_left}px;margin-top:#{o.cheque_formate_id.account_title_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                                Cuentas
+                                            </th>
+                                            <th t-attf-style="margin-left:#{o.cheque_formate_id.debit_margin_left}px;margin-top:#{o.cheque_formate_id.debit_title_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                                Debe
+                                            </th>
+                                            <th t-attf-style="margin-left:#{o.cheque_formate_id.credit_margin_left}px;margin-top:#{o.cheque_formate_id.credit_title_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                                Haber
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="sale_tbody" t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;"
+                                            t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                        <tr t-foreach="o.move_line_ids" t-as="l">
+                                            <td t-attf-style="margin-left:#{o.cheque_formate_id.date_margin_left}px;margin-top:#{o.cheque_formate_id.date_column_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                               <span t-field="l.date"/>
+                                            </td>
+
+                                            <td t-attf-style="margin-left:#{o.cheque_formate_id.account_margin_left}px;margin-top:#{o.cheque_formate_id.account_column_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                               <span t-field="l.account_id.code"/> <span t-field="l.account_id.name"/>
+                                            </td>
+
+                                            <td t-attf-style="margin-left:#{o.cheque_formate_id.debit_margin_left}px;margin-top:#{o.cheque_formate_id.debit_column_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                               <span t-field="l.debit"
+                                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            </td>
+
+                                            <td t-attf-style="margin-left:#{o.cheque_formate_id.credit_margin_left}px;margin-top:#{o.cheque_formate_id.credit_column_margin_top}px;"
+                                                t-attf-class="#{'standard' if o.cheque_formate_id.standard_accounting_entry == True else 'custom_account_entries'}">
+                                               <span t-field="l.credit"
+                                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="clearfix" name="so_total_summary">
+                                    <div id="total" class="row" name="total" t-attf-style="font-size:#{o.cheque_formate_id.font_size}px;" style="margin-top:0.5cm;">
+                                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                            <table class="table table-sm">
+                                                <tr class="border-black o_total">
+                                                    <td name="debit_total"  class="text-right">
+<!--                                Mejora del 25.05.2021 para que monto sea separado en miles por coma.-->
+                                                        <span t-esc="'{:,.2f}'.format(debit_total)"/>
+                                                    </td>
+                                                    <td name="credit_total" class="text-right">
+<!--                                Mejora del 25.05.2021 para que monto sea separado en miles por coma.-->
+                                                        <span t-esc="'{:,.2f}'.format(credit_total)"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+    </template>
+
+    <template id="report_print_cheque">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="l10n_gt_check_printing.report_print_cheque_template" />
+            </t>
+        </t>
+    </template>
+</odoo>

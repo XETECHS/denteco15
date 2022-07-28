@@ -1,0 +1,30 @@
+.qr {
+  max-height: 200px;
+  padding-top: 1px;
+}
+.fac_t_letra_peq {
+  font-size: 11px;
+}
+.fac_t_letra_fcam {
+  font-size: 8px;
+}
+.fac_t_letra_med {
+  font-size: 12px;
+}
+.fac_t_letra_gr {
+  font-size: 17px;
+}
+.fac_t_letra_gen {
+  font-size: 17px;
+  padding-top: 15px;
+}
+.bordes_detalle {
+  padding-top: 0px;
+  padding-bottom: 1px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.bordes_encabezado {
+  padding-left: 0px;
+  padding-right: 0px;
+}

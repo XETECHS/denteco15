@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--<data noupdate="1">-->
+    <data>
+
+        <record id="paperformat_check_voucher" model="report.paperformat">
+            <field name="name">Cheque Voucher</field>
+            <field name="default" eval="False" />
+            <field name="format">Letter</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_check_formato" model="report.paperformat">
+            <field name="name">GT Formato Carta</field>
+            <field name="default" eval="False" />
+            <field name="format">Letter</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            id="action_report_print_cheque"
+            string="Imprimir Cheque"
+            model="account.payment"
+            report_type="qweb-pdf"
+            name="l10n_gt_check_printing.report_print_cheque"
+            file="l10n_gt_check_printing.report_print_cheque"/>
+
+        <report id="action_print_check_voucher"
+            string="Cheque Voucher"
+            model="account.payment"
+            name="l10n_gt_check_printing.report_print_cheque"
+            file="l10n_gt_check_printing.report_print_cheque"
+            report_type="qweb-pdf"
+            attachment_use="True"
+            attachment="'cheque_'+(object.partner_id and object.partner_id.name or 'Internal')+'_'+(object.name)+'_voucher.pdf'"
+            paperformat="l10n_gt_check_printing.paperformat_check_voucher"
+            print_report_name="'Cheque No.%s - %s' % (object.check_number or '',object.partner_id.name or '')"
+            menu="False"/>
+
+        <report id="action_print_check_format"
+            string="Cheque Formato"
+            model="account.payment"
+            name="l10n_gt_check_printing.print_check_format"
+            file="l10n_gt_check_printing.print_check_format"
+            report_type="qweb-pdf"
+            attachment_use="True"
+            attachment="'cheque_'+(object.partner_id and object.partner_id.name or 'Internal')+'_'+(object.name)+'_formato.pdf'"
+            paperformat="l10n_gt_check_printing.paperformat_check_formato"
+            print_report_name="'Cheque No.%s - %s' % (object.check_number or '',object.partner_id.name or '')"
+            menu="False"/>
+
+        <record id="paperformat_cheque" model="report.paperformat">
+            <field name="name">cheque A4</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="l10n_gt_check_printing.action_report_print_cheque" model="ir.actions.report">
+			<field name="paperformat_id" ref="l10n_gt_check_printing.paperformat_cheque" />
+		</record>
+
+        <!--<record id="account_check_printing.account_payment_method_transfer" model="account.payment.method">-->
+            <!--<field name="name">Transfer</field>-->
+            <!--<field name="code">transfer</field>-->
+            <!--<field name="payment_type">outbound</field>-->
+        <!--</record>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <data noupdate="0">
+           <record id="res_partner01" model="res.partner">
+                <field name="name">FERRETERIA LA NUEVA DE COMALAPA</field>
+                <field name="street">0 calle 2-01 zona 4, San Juan Comalapa</field>
+                <field name="country_id">90</field>
+                <field name="state_id">181</field>
+           </record>
+
+           <record id="res_partner02" model="res.partner">
+                <field name="name">DISTRIBUIDORA LA NUEVA LID</field>
+                <field name="street">Carretera Interamericana km 49.5 El Tejar</field>
+                <field name="country_id">90</field>
+                <field name="state_id">181</field>
+           </record>
+
+           <record id="res_partner03" model="res.partner">
+                <field name="name">FERRRETERIA LA NUEVA DE HUEHUETENANGO</field>
+                <field name="street">Km 254 Carretera Interamericana Aldea Ojechejel</field>
+                <field name="country_id">90</field>
+                <field name="state_id">186</field>
+           </record>
+     </data>
+</odoo>

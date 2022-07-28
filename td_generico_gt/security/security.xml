@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_product_cost_manager" model="res.groups">
+            <field name="name">Administración de costo de producto</field>
+            <field name="comment">Grupo permite hacer visible el campo costo en la ficha técnica de cada producto</field>
+        </record>
+    </data>
+</odoo>

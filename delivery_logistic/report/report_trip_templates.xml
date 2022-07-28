@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_trip">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page" style="font-size:18px;">
+                        <div style="text-align:center;" class="mt8 mb16">
+                            <div class="col-10" style="text-aling:left;vertical-align:center;">
+                                <table>
+                                    <tr>
+                                        <td style="text-align:left;width:200px;vertical-align:middle;">
+                                            <img t-if="o.company_id.logo" style="max-width:200px;margin:auto;"
+                                                 t-att-src="image_data_uri(o.company_id.logo)" alt="Logo"/>
+                                        </td>
+                                        <td  name="company_address" style="text-align: left; padding-left:30px;font-size:15px;width:300px;">
+                                          <div><span t-field="o.company_id.legal_name"/></div>
+                                          <div><span t-field="o.company_id.street"/></div>
+                                          <div><span t-field="o.company_id.street2"/></div>
+                                          <div><span t-field="o.company_id.state_id.name"/>, <span t-field="o.company_id.country_id.name"/></div>
+                                          <div><span t-field="o.company_id.vat"/></div>
+                                          <div><span t-field="o.company_id.email"/></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <h2 t-field="o.name"/>
+                        <div class="col-12" style="text-aling:left;vertical-align:center;">
+                            <div id="main_info" class="mt32 mb16 border-top border-bottom">
+                                <div class="row mt16 mb16">
+                                    <div class="col-5">
+                                        <strong>Fecha: </strong>
+                                        <span class="m-0" t-field="o.initial_date"/>
+                                    </div>
+
+                                    <div class="col-7">
+                                        <strong>Ruta: </strong>
+                                        <span class="m-0" t-field="o.route_id.name"/>
+                                    </div>
+                                </div>
+                                <div class="row mb16">
+                                    <div class="col-5">
+                                        <strong>Vehículo: </strong>
+                                        <span class="m-0" t-field="o.vehicle_id.name"/>
+                                    </div>
+
+                                    <div class="col-7">
+                                        <strong>Piloto: </strong>
+                                        <span class="m-0" t-field="o.driver_id.name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Pedido</th>
+                                    <th>Nombre</th>
+                                    <th>Dirección</th>
+                                    <th># Factura</th>
+                                    <th>Firma autorizada</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr t-foreach="o.sale_order_ids" t-as="sale">
+                                    <td id="sale_order">
+                                        <span t-field="sale.name"/>
+                                    </td>
+
+                                    <td id="partner">
+                                        <span t-field="sale.partner_id.name"/>
+                                    </td>
+
+                                    <td id="delivery_address">
+                                        <span t-field="sale.partner_shipping_id"
+                                              t-field-options='{"widget": "contact", "fields": ["address", "country_id", "state_id", "street", "phone"], "no_marker": true, "phone_icons": true}'/>
+                                    </td>
+
+                                    <td id="invoices">
+                                        <t t-foreach="sale.invoice_ids" t-as="inv">
+                                            <span t-field="inv.name"/>,
+                                        </t>
+                                    </td>
+
+                                    <td id="signature">
+                                        <p class="text-right">
+                                            <strong style="border-bottom: 1px solid black;"/>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

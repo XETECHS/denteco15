@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="TripListView.buttons_trip_final">
+        <button type="button" class="btn btn-secondary o_button_trip_final">
+            Terminar viaje(s)
+        </button>
+
+        <button type="button" class="btn btn-secondary o_button_trip_final_incomplete">
+            Terminar viaje(s) como incompleto(s)
+        </button>
+    </t>
+</templates>

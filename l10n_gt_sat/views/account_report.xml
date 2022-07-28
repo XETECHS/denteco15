@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="l10n_gt_sat_paper_libro_fiscal" model="report.paperformat">
+      <field name="name">l10n_gt_sat Papel Libros Fiscales</field>
+      <field name="default" eval="True" />
+      <field name="format">Letter</field>
+      <field name="page_height">0</field>
+      <field name="page_width">0</field>
+      <field name="orientation">Portrait</field>
+      <field name="margin_top">1</field>
+      <field name="margin_bottom">25</field>
+      <field name="margin_left">7</field>
+      <field name="margin_right">7</field>
+      <field name="header_line" eval="False" />
+      <field name="header_spacing">35</field>
+      <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_payment_receipt_media" model="ir.actions.report">
+      <field name="name">Formato de Cheque, Media Carta</field>
+      <field name="model">account.payment</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">l10n_gt_sat.report_arml_print_check_top_media</field>
+      <field name="report_file">l10n_gt_sat.report_arml_print_check_top_media</field>
+      <field name="paperformat_id" ref="l10n_gt_sat.l10n_gt_sat_paper_cheque_media" />
+      <field name="attachment">(object.state == 'posted') and ((object.name or 'CH').replace('/','_')+'.pdf')</field>
+      <field name="binding_type">report</field>
+    </record>
+    <!-- Formato para imprimir los cheques utilizando cheque y voucher carta -->
+
+
+    <record id="action_report_payment_receipt_carta" model="ir.actions.report">
+      <field name="name">Formato de Cheque, Carta</field>
+      <field name="model">account.payment</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">l10n_gt_sat.report_arml_print_check_top_carta</field>
+      <field name="report_file">l10n_gt_sat.report_arml_print_check_top_carta</field>
+      <field name="paperformat_id" ref="l10n_gt_sat.l10n_gt_sat_paper_cheque_carta" />
+      <field name="attachment">(object.state == 'posted') and ((object.name or 'CH').replace('/','_')+'.pdf')</field>
+      <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="action_report_payment_receipt_c5" model="ir.actions.report">
+      <field name="name">Formato de Cheque, C5</field>
+      <field name="model">account.payment</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">l10n_gt_sat.report_arml_print_check_top_carta</field>
+      <field name="report_file">l10n_gt_sat.report_arml_print_check_top_carta</field>
+      <field name="paperformat_id" ref="l10n_gt_sat.l10n_gt_sat_paper_cheque_c5" />
+      <field name="attachment">(object.state == 'posted') and ((object.name or 'CH').replace('/','_')+'.pdf')</field>
+      <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="action_report_librofiscal" model="ir.actions.report">
+      <field name="name">Libros Fiscales</field>
+      <field name="model">l10n_gt_sat.librofiscal.report</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">l10n_gt_sat.librofiscal</field>
+      <field name="report_file">l10n_gt_sat.librofiscal</field>
+      <field name="paperformat_id" ref="l10n_gt_sat.l10n_gt_sat_paper_libro_fiscal" />
+      <field name="binding_type">report</field>
+    </record>
+
+    <record id="account_librofiscal_report_xls" model="ir.actions.report">
+      <field name="name">Libros Fiscales</field>
+      <field name="model">report.l10n_gt_sat.account_librofiscal_report_xls</field>
+      <field name="report_type">xlsx</field>
+      <field name="report_name">l10n_gt_sat.account_librofiscal_report_xls</field>
+      <field name="report_file">l10n_gt_sat.account_librofiscal_report_xls</field>
+      <field name="binding_type">report</field>
+    </record>
+
+    <record id="libro_contable_diario_xlsx" model="ir.actions.report">
+      <field name="name">Libro Contable Diario</field>
+      <field name="model">report.l10n_gt_sat.libro_contable_diario_xlsx</field>
+      <field name="report_type">xlsx</field>
+      <field name="report_name">l10n_gt_sat.libro_contable_diario_xlsx</field>
+      <field name="report_file">l10n_gt_sat.libro_contable_diario_xlsx</field>
+      <field name="binding_type">report</field>
+    </record>
+
+    <record id="libro_contable_mayor_xlsx" model="ir.actions.report">
+      <field name="name">Libro Contable Mayor</field>
+      <field name="model">report.l10n_gt_sat.libro_contable_mayor_xlsx</field>
+      <field name="report_type">xlsx</field>
+      <field name="report_name">l10n_gt_sat.libro_contable_mayor_xlsx</field>
+      <field name="report_file">l10n_gt_sat.libro_contable_mayor_xlsx</field>
+      <field name="binding_type">report</field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+
+  <data>
+    <record model="ir.actions.act_window" id="delivery_logistic_trips_action_window">
+      <field name="name">Viajes</field>
+      <field name="res_model">delivery_logistic.trip</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="delivery_logistic_routes_action_window">
+      <field name="name">Rutas</field>
+      <field name="res_model">delivery_logistic.route</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="delivery_logistic_drivers_action_window">
+      <field name="name">Pilotos</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('is_driver', '=', True)]</field>
+      <field name="context">{'default_is_driver': True}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="delivery_logistic_delivery_action_window">
+      <field name="name">Entregas</field>
+      <field name="res_model">stock.picking</field>
+      <field name="view_mode">tree,form,kanban</field>
+      <field name="domain">[('route_id', '!=', False), ('trip_id', '=', False), ('is_return_picking', '=', False), ('state', '!=', 'cancel'), ('is_delivery', '=', True)]</field>
+      <field name="context">
+          {'tree_view_ref': 'delivery_logistic.vpicktree',
+           'form_view_ref': 'delivery_logistic.view_picking_form',
+           'kanban_view_ref': 'delivery_logistic.stock_picking_kanban_delivery_logistic'
+          }
+      </field>
+    </record>
+
+    <menuitem name="Logística" id="delivery_logistic_menu_root" parent="stock.menu_stock_root"/>
+
+    <menuitem name="Viajes" id="delivery_logistic_trips_menu"
+              parent="delivery_logistic.delivery_logistic_menu_root"
+              action="delivery_logistic.delivery_logistic_trips_action_window"
+              sequence="1"/>
+
+    <menuitem name="Rutas" id="delivery_logistic_routes_menu"
+              parent="delivery_logistic.delivery_logistic_menu_root"
+              action="delivery_logistic.delivery_logistic_routes_action_window"
+              sequence="2"/>
+
+    <menuitem name="Pilotos" id="delivery_logistic_driver_menu"
+              parent="delivery_logistic.delivery_logistic_menu_root"
+              action="delivery_logistic.delivery_logistic_drivers_action_window"
+              sequence="3"/>
+
+    <menuitem name="Entregas" id="delivery_logistic_delivery_menu"
+              parent="delivery_logistic.delivery_logistic_menu_root"
+              action="delivery_logistic.delivery_logistic_delivery_action_window"
+              sequence="4"/>
+  </data>
+
+</odoo>

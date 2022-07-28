@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="fel.invoice_denteco">
+      <t t-call="web.basic_layout">
+
+        <link rel="stylesheet" href="/fel/static/src/css/report.css" />
+
+        <div class="header header-relativo">
+          <link rel="stylesheet" href="/fel/static/src/css/report.css" />
+
+          <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)" />
+
+          <t t-if="display_discount">
+            <div class="separador-reporte border-bottom bg-dark" style="left: 0px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 80px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 593px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 702px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 777px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 885px;"></div>
+          </t>
+          <t t-if="not display_discount">
+            <div class="separador-reporte border-bottom bg-dark" style="left: 0px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 80px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 593px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 680px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 777px;"></div>
+            <div class="separador-reporte border-bottom bg-dark" style="left: 885px;"></div>
+          </t>
+
+
+          <t t-if="o.state == 'cancel'">
+            <div class="backgroundimage marca-agua">
+              <p>ANULADO</p>
+            </div>
+          </t>
+          <t t-if="o.state == 'draft'">
+            <div class="backgroundimage marca-agua">
+              <p>BORRADOR</p>
+            </div>
+          </t>
+
+          <div class="container">
+
+            <div class="row" style="height: 275px; padding-top: 30px;">
+              <div class="col-4 text-left">
+                <t t-if="o.company_id.logo">
+                  <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" style="max-height: 170px;" alt="Logo" />
+                </t>
+              </div>
+              <div class="col-4 text-center">
+                <br />
+                <br />
+                <small class="encabezado_factura">
+                  <t t-if="o.fel_setting_id">
+                    <strong>
+                      <span t-esc="o.fel_setting_id.nombre_comercial.upper()" class="fac_t_letra_gr" />
+                      <br />
+                    </strong>
+                    <span t-esc="o.company_id.company_registry" class="fac_t_letra_gr" />
+                  </t>
+                  <br />
+                  NIT:
+                  <span t-field="o.company_id.vat" class="fac_t_letra_gr" />
+                  <br />
+                  <span t-field="o.fel_setting_id.emisor.street" class="fac_t_letra_med" />
+                  <br />
+                  <t t-if="o.fel_setting_id.emisor.city">
+                    <span t-field="o.fel_setting_id.emisor.city" class="fac_t_letra_med" />
+                    ,
+                  </t>
+                  <span t-field="o.fel_setting_id.emisor.state_id.name" class="fac_t_letra_med" />
+                </small>
+              </div>
+              <div class="col-4 fac_t_letra_gen">
+                <br />
+                <br />
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <span>DOCUMENTO TRIBUTARIO ELECTRÓNICO</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <span t-field="o.journal_id.tipo_documento" />
+                    Electrónica
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    Serie.
+                    <br />
+                    No.
+                  </div>
+                  <div class="col-6">
+                    <span t-field="o.fac_serie" />
+                    <br />
+                    <span t-field="o.fac_numero" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    Fecha Emisión:
+                  </div>
+                  <div class="col-6">
+                    <span t-field="o.invoice_date" />
+                  </div>
+                </div>
+                <!--<div class="row">
+                  <div class="col-12">
+                    <div class="row fac_t_letra_gen">
+                      <div class="col-4 text-center  border ">
+                          Dia
+                        </div>
+                      <div class="col-4 text-center  border ">
+                          Mes
+                        </div>
+                      <div class="col-4 text-center  border ">
+                          Año
+                        </div>
+                    </div>
+                    <div class="row text-center fac_t_letra_gen">
+                      <t t-set="fecha" t-value="o.get_fecha()" />
+                      <div class="col-4">
+                        <span t-esc="fecha['dia']" />
+                      </div>
+                      <div class="col-4">
+                        <span t-esc="fecha['mes']" />
+                      </div>
+                      <div class="col-4">
+                        <span t-esc="fecha['año']" />
+                      </div>
+                    </div>
+                  </div>
+                </div>-->
+              </div>
+            </div>
+            <!--<div class="row">
+              <div class="col-12 text-left">
+                <small>
+                  <t t-if="o.fel_setting_id">
+                    No. interno:
+                    <span t-esc="o.name" />
+                    <t t-if="o.journal_id.tipo_documento in ('NABN','NCRE')">
+                      No. interno doc origen:
+                      <span t-esc="o.reversed_entry_id.name" />
+                    </t>
+                    <t t-if="o.journal_id.tipo_documento in ('NDEB')">
+                      No. interno doc origen:
+                      <span t-esc="o.fel_factura_referencia_id.name" />
+                    </t>
+                  </t>
+                </small>
+              </div>
+            </div>-->
+            <div class="factura_contendedor">
+            <div class="row">
+            <t t-set="fecha" t-value="o.get_fecha()" />
+              <div class="col-1 border border-dark">
+                <small>
+                DIA
+                <br/>
+                <span t-esc="fecha['dia']"/>
+                </small>
+              </div>
+              <div class="col-1 border border-dark">
+                <small>
+                MES
+                <br/>
+                <span t-esc="fecha['mes']"/>
+                </small>
+              </div>
+              <div class="col-1 border border-dark">
+                <small>
+                AÑO
+                <br/>
+                <span t-esc="fecha['año']"/>
+                </small>
+              </div>
+              <div class="col-2 border border-dark">
+                <small>
+                DIAS CRÉDITO
+                <br/>
+                <span t-esc="o.invoice_payment_term_id.line_ids[0].day_of_the_month" t-if="o.invoice_payment_term_id and o.invoice_payment_term_id.line_ids"/>
+                </small>
+              </div>
+              <div class="col-2 border border-dark">
+                <small>
+                FORMA DE PAGO
+                <br/>
+                <span t-esc="o.invoice_payment_term_id.name" t-if="o.invoice_payment_term_id"/>
+                <t t-if="not o.invoice_payment_term_id">
+                  <span>Contado</span>
+                </t>
+                </small>
+              </div>
+              <div class="col-3 border border-dark">
+                <small>
+                REF
+                <br/>
+                <span t-esc="o.name" />
+                </small>
+              </div>
+              <div class="col-2 border border-dark">
+                <small>
+                VENDIDO
+                <br/>
+                <span t-field="o.invoice_user_id.name"/>
+                </small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 border border-dark">
+                <small>
+                CLIENTE:
+                <span t-field="o.partner_id.name"/>
+                </small>
+              </div>
+              <div class="col-4 border border-dark">
+                <small>
+                CODIGO DEL CLIENTE:
+                <span t-field="o.partner_id.vat"/>
+                </small>
+              </div>
+              <div class="col-2 border border-dark">
+                <small>
+                NIT:
+                <span t-field="o.partner_id.vat"/>
+                </small>
+              </div>
+            </div>
+            </div>
+
+            <!--<div class="row fac_t_letra_gen">
+              <div class="col-6 border ">
+                NOMBRE:
+                <span t-field="o.partner_id.name" />
+                <br />
+                DIRECCIÓN:
+                <span t-field="o.partner_id.display_street" />
+              </div>
+              <div class="col-6 text-right border  fac_t_letra_gen">
+                NIT:
+                <t t-if="o.partner_id.vat">
+                  <span t-field="o.partner_id.vat" />
+                </t>
+                <t t-if="not o.partner_id.vat">
+                  <span>C/F</span>
+                </t>
+              </div>
+            </div>-->
+          </div>
+        </div>
+
+        <div class="page">
+
+          <!-- <div class="page" style="height: 427px;">-->
+          <div class="container">
+
+            <!-- CON DESCUENTO-->
+            <t t-if="display_discount">
+
+              <div class="row">
+                <div class="col">
+                  <table class="table  fac_t_letra_gen" name="">
+                    <thead class="  py-1">
+                      <tr class="border-0 py-1">
+                        <th name="" class="text-center border-0 py-1">
+                          <span>CANT</span>
+                        </th>
+                        <th name="" class="text-center border-0 py-1">
+                          <span>PRODUCTO</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>P. UNIT</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>DESC</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>TOTAL</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                      <t t-foreach="o.detalle_factura()" t-as="l">
+                        <tr class="border-0 fac_t_letra_gen">
+                        <t t-if="l['price_unit']">
+                          <td class="text-center py-1" name="">
+                            <span t-esc="l['quantity']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-left py-1">
+                            <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-right py-1">
+                            <span t-esc="l['price_unit']" class="border-0 text-wrap text-break" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                          </td>
+                          <td class="text-right py-1">
+                            <span t-esc="l['discount']" class="border-0 text-wrap text-break" />
+                            %
+                          </td>
+                          <td class="text-right py-1">
+                            <span t-esc="l['price_total']" class="border-0 text-wrap text-break" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                          </td>
+                        </t>
+                        <t t-if="not l['price_unit']">
+                          <td class="text-center py-1" name="">
+                            <span></span>
+                          </td>
+                          <td class="text-left py-1">
+                            <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-right py-1">
+                            <span></span>
+                          </td>
+                          <td class="text-right py-1">
+                            <span></span>
+                            %
+                          </td>
+                          <td class="text-right py-1">
+                            <span></span>
+                          </td>
+                        </t>
+                        </tr>
+                      </t>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </t>
+            <!-- SIN DESCUENTO-->
+            <t t-if="not display_discount">
+              <div class="row">
+                <div class="col">
+                  <table class="table fac_t_letra_gen" name="">
+                    <thead class="border border-dark">
+                      <tr class="border border-dark factura_contendedor">
+                        <th name="" class="text-center border border-dark">
+                          <span>CODIGO</span>
+                        </th>
+                        <th name="" class="text-center border border-dark">
+                          <span>DESCRIPCION</span>
+                        </th>
+                        <th name="" class="text-center border border-dark">
+                          <span>CANT</span>
+                        </th>
+                        <th name="" class="text-center border border-dark">
+                          <span>P. UNIT</span>
+                        </th>
+                        <th name="" class="text-center border border-dark">
+                          <span>TOTAL</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                      <t t-foreach="o.detalle_factura()" t-as="l">
+                        <tr class="border-0 fac_t_letra_gen">
+                          <t t-if="l['price_unit']">
+                            <td class="text-center py-1" name="" style="width: 88px !important;">
+                              <span t-esc="l['default_code']" class="border-0 text-wrap text-break" />
+                            </td>
+                            <td class="text-left py-1" style="width: 566px !important;">
+                              <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                            </td>
+                            <td class="text-right py-1" name="" style="width: 88px !important;">
+                              <span t-esc="l['quantity']" class="border-0 text-wrap text-break" />&#160;&#160;&#160;
+                            </td>
+                            <td class="text-right py-1" style="width: 115px !important;">
+                              <span t-esc="l['price_unit']" class="border-0 text-wrap text-break"  t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                            </td>
+                            <td class="text-right py-1" style="width: 116px !important;">
+                              <span t-esc="l['price_total']" class="border-0 text-wrap text-break"  t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                            </td>
+                          </t>
+                        <t t-if="not l['price_unit']">
+                          <td class="text-center py-1" name="" style="width: 88px !important;">
+                            <span> </span>
+                          </td>
+                          <td class="text-left py-1" style="width: 566px !important;">
+                            <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-center py-1" name="" style="width: 88px !important;">
+                            <span> </span>
+                          </td>
+                          <td class="text-right py-1" style="width: 115px !important;">
+                            <span> </span>
+                          </td>
+                          <td class="text-right py-1" style="width: 116px !important;">
+                            <span> </span>
+                          </td>
+                        </t>
+                        </tr>
+                      </t>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </t>
+          </div>
+        </div>
+
+        <div class="footer">
+          <link rel="stylesheet" href="/fel/static/src/css/report.css" />
+          <div class="container">
+            <t t-if="o.journal_id.tipo_documento == 'FESP'">
+              <t t-set="especial" t-value="o.get_impuestos_factura_especial()" />
+              <div class="row fac_t_letra_med">
+                <div class="col-3"></div>
+                <div class="col-6 text-left  border  fac_t_letra_peq">
+                  <p class="text-light text-center">COMPLEMENTO DE FACTURA ESPECIAL</p>
+                </div>
+                <div class="col-3"></div>
+              </div>
+              <div class="row fac_t_letra_med">
+                <div class="col-3"></div>
+                <div class="col-3 text-left fac_t_letra_peq">
+                  Retención ISR:
+                  <br />
+                  Retención IVA:
+                  <br />
+                  Total a Pagar:
+                  <br />
+                </div>
+                <div class="col-3 text-right fac_t_letra_peq">
+                  <t t-esc="especial['isr']" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                  <br />
+                  <t t-esc="especial['iva']" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                  <br />
+                  <t t-esc="especial['totalmenosretenciones']" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                </div>
+                <div class="col-3"></div>
+              </div>
+            </t>
+            <div class="row">
+              <div class="col-4 text-left"></div>
+              <div class="col-4 text-center">
+                <t t-if="not o.journal_id.fel_frases_ids">
+                    <br />
+                    <br /> 
+                </t>
+                <t t-if="o.journal_id.fel_frases_ids">
+                  <t t-foreach="o.journal_id.fel_frases_ids" t-as="frase">
+                    <t t-if="frase">
+                      <small>
+                        <span t-esc="frase.fel_escenario.texto.upper()" />
+                        <br />
+                      </small>
+                    </t>
+                  </t>
+                </t>
+              </div>
+              <div class="col-4 text-left"></div>
+            </div>
+            <div class="row fac_t_letra_gen border ">
+              <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)" />
+              <t t-set="total" t-value="o.totales()" />
+
+
+              <t t-if="total['gran_subtotal'] == 0.00">
+                <table class="table table-sm tabla_footer">
+                  <tr>
+                    <td colspan="2" style="width: 66%">
+                      TOTAL EN LETRAS<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><t t-esc="total['gran_total_total_letras']" />
+                    </td>
+                    <td colspan="1" class="text-center" style="width: 21%">TOTAL</td>
+                    <td colspan="1" class="text-right" style="width: 13%">
+                      <span t-esc="total['gran_total_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                    </td>
+                  </tr>
+                </table>
+              </t>
+
+              <t t-if="total['gran_subtotal'] != 0.00">
+                <table class="table table-sm tabla_footer">
+                  <tr>
+                      <td colspan="2" style="width: 67%"></td>
+                      <td class="text-center " style="width: 21%">SUBTOTAL</td>
+                      <td class="text-right" style="width: 12%">
+                        <span t-esc="total['gran_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                      </td>
+                  </tr>
+                    <tr>
+                      <td colspan="2" style="width: 67%">TOTAL EN LETRAS</td>
+                      <td class="text-center " style="width: 21%">DESCUENTO</td>
+                      <td class="text-right" style="width: 12%">
+                        <span t-esc="total['gran_subtotal']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                      </td>
+                    </tr>
+                  <tr>
+                    <td colspan="2" style="width: 67%">
+                      <t t-esc="total['gran_total_total_letras']" />
+                    </td>
+                    <td colspan="1" class="text-center " style="width: 21%">TOTAL</td>
+                    <td colspan="1" class="text-right" style="width: 12%">
+                      <span t-esc="total['gran_total_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                    </td>
+                  </tr>
+                </table>
+              </t>
+            </div>
+            <div class="row">
+              <t t-if="o.journal_id.tipo_documento in ('NDEB','NCRE')">
+                <t t-set="informacion" t-value="o.get_info_document()" />
+                <div class="col-6 text-left fac_t_letra_peq border-right border-left border-bottom ">
+                  <small>
+                    Regimen:
+                    <t t-esc="informacion['regimen']" />
+                    <br />
+                    Fecha emision doc origen:
+                    <t t-esc="informacion['fecha_emision']" />
+                    <br />
+                    Numero autorizacion doc origen:
+                    <t t-esc="informacion['numero_autorizacion']" />
+                  </small>
+                </div>
+                <div class="col-6 text-left fac_t_letra_peq border-right border-left border-bottom ">
+                  <small>
+                    Serie doc origen:
+                    <t t-esc="informacion['serie_origen']" />
+                    <br />
+                    No doc origen:
+                    <t t-esc="informacion['no_origen']" />
+                    <br />
+                    Motivo Ajuste:
+                    <t t-esc="informacion['motivo']" />
+                  </small>
+                </div>
+              </t>
+            </div>
+            <div class="row fac_t_letra_med">
+              <div class="col-3 text-left fac_t_letra_med">
+                CERTIFICADOR:
+                <t t-esc="o.fel_setting_id.proveedor_id.name" />
+                <br />
+                NIT:
+                <t t-esc="o.fel_setting_id.proveedor_id.vat" />
+              </div>
+              <div class="col-4 fac_t_letra_peq">
+                <t t-if="o.journal_id.tipo_documento == 'FCAM'">
+                  <t t-set="total" t-value="o.totales()" />
+                  NÚMERO DE ABONO: 1
+                  <br />
+                  MONTO DE ABONO:
+                  <span t-esc="total['gran_total_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                  <br />
+                  FECHA DE VENCIMIENTO:
+                  <span t-esc="o.invoice_payment_term_id.name" />
+                </t>
+              </div>
+              <div class="col-3">
+                <t t-if="o.fel_url">
+                  <center>
+                    <img t-if="o.generate_qr()" t-att-src="'data:image/png;base64,%s' % to_text(o.generate_qr())" style="max-height:70px;padding-top: 1px;"/>
+                    <br />
+                    <span class="fac_t_letra_peq">ESCANEA EL CODIGO QR</span>
+                  </center>
+                </t>
+              </div>
+              <div class="col-2 text-center">
+                <img src="/fel/static/img/FEL.PNG" style="max-height:70px;padding-top: 1px;" />
+              </div>
+            </div>
+            <!--<div class="row">
+              <div class="col-12 text-left fac_t_letra_med">
+                <span class="font-weight: bold">NÚMERO DE AUTORIZACIÓN:<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span>
+                <t t-esc="o.fel_firma" /><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                <span class="font-weight: bold">FECHA DE CERTIFICACIÓN:<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span>
+                <t t-esc="o.fecha_certificacion" />
+              </div>
+            </div>-->
+            <div class="row">
+              <div class="col-12 text-left">
+                Único comprobante de pago Recibo de caja.
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center fac_t_letra_med">
+                <img src="/fel/static/img/footer_denteco.PNG"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+
+    <template id="fel.invoice_denteco_cam">
+      <t t-call="web.basic_layout">
+
+        <link rel="stylesheet" href="/fel/static/src/css/report_fcam.css" />
+
+        <div class="header header-relativo">
+          <link rel="stylesheet" href="/fel/static/src/css/report_fcam.css" />
+
+          <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)" />
+
+          <t t-if="display_discount">
+            <div class="separador-reporte " style="left: 0px;"></div>
+            <div class="separador-reporte " style="left: 80px;"></div>
+            <div class="separador-reporte " style="left: 594px;"></div>
+            <div class="separador-reporte " style="left: 702px;"></div>
+            <div class="separador-reporte " style="left: 778px;"></div>
+            <div class="separador-reporte " style="left: 885px;"></div>
+          </t>
+          <t t-if="not display_discount">
+            <div class="separador-reporte " style="left: 0px;"></div>
+            <div class="separador-reporte " style="left: 88px;"></div>
+            <div class="separador-reporte " style="left: 647px;"></div>
+            <div class="separador-reporte " style="left: 769px;"></div>
+            <div class="separador-reporte " style="left: 885px;"></div>
+          </t>
+
+          <t t-if="o.state == 'cancel'">
+            <div class="backgroundimage marca-agua">
+              <p>ANULADO</p>
+            </div>
+          </t>
+          <t t-if="o.state == 'draft'">
+            <div class="backgroundimage marca-agua">
+              <p>BORRADOR</p>
+            </div>
+          </t>
+
+          <div class="container">
+
+            <div class="row" style="height: 275px; padding-top: 30px;">
+              <div class="col-4 text-left">
+                <t t-if="o.company_id.logo">
+                  <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" class="mw-100" />
+                </t>
+              </div>
+              <div class="col-4 text-center">
+                <br />
+                <br />
+                <small class="encabezado_factura">
+                  <t t-if="o.fel_setting_id">
+                    <strong>
+                      <span t-esc="o.fel_setting_id.nombre_comercial.upper()" class="fac_t_letra_gr" />
+                      <br />
+                    </strong>
+                    <span t-esc="o.company_id.company_registry" class="fac_t_letra_gr" />
+                  </t>
+                  <br />
+                  NIT:
+                  <span t-field="o.company_id.vat" class="fac_t_letra_gr" />
+                  <br />
+                  <span t-field="o.fel_setting_id.emisor.street" class="fac_t_letra_med" />
+                  <br />
+                  <t t-if="o.fel_setting_id.emisor.city">
+                    <span t-field="o.fel_setting_id.emisor.city" class="fac_t_letra_med" />
+                    ,
+                  </t>
+                  <span t-field="o.fel_setting_id.emisor.state_id.name" class="fac_t_letra_med" />
+                </small>
+              </div>
+              <div class="col-4 fac_t_letra_gen">
+                <br />
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <span>DOCUMENTO TRIBUTARIO ELECTRÓNICO</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center  border ">
+                    <span t-field="o.journal_id.tipo_documento" />
+                    Electrónica
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    Serie.
+                    <br />
+                    No.
+                  </div>
+                  <div class="col-6">
+                    <span t-field="o.fac_serie" />
+                    <br />
+                    <span t-field="o.fac_numero" />
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row fac_t_letra_gen">
+                      <div class="col-4 text-center  border ">
+                          Dia
+                        </div>
+                      <div class="col-4 text-center  border ">
+                          Mes
+                        </div>
+                      <div class="col-4 text-center  border ">
+                          Año
+                        </div>
+                    </div>
+                    <div class="row text-center fac_t_letra_gen">
+                      <t t-set="fecha" t-value="o.get_fecha()" />
+                      <div class="col-4">
+                        <span t-esc="fecha['dia']" />
+                      </div>
+                      <div class="col-4">
+                        <span t-esc="fecha['mes']" />
+                      </div>
+                      <div class="col-4">
+                        <span t-esc="fecha['año']" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="row fac_t_letra_peq">
+                          <div class="col-12">
+                            <p>Se servirá usted pagar por esta única factura cambiaria girada libre de protesto a la orden o endoso
+                                de COMERCIAL MAYORISTA,S.A. El valor total por el que está extendida o por el último saldo
+                                insoluto que aparezca, valor recibido que asentará usted a cuenta según nuestro aviso</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-left">
+                <small>
+                  <t t-if="o.fel_setting_id">
+                    No. interno:
+                    <span t-esc="o.name" />
+                    <t t-if="o.journal_id.tipo_documento in ('NABN','NCRE')">
+                      No. interno doc origen:
+                      <span t-esc="o.reversed_entry_id.name" />
+                    </t>
+                    <t t-if="o.journal_id.tipo_documento in ('NDEB')">
+                      No. interno doc origen:
+                      <span t-esc="o.fel_factura_referencia_id.name" />
+                    </t>
+                  </t>
+                </small>
+              </div>
+            </div>
+            <div class="row fac_t_letra_gen">
+              <div class="col-12 text-center  border ">
+                  CLIENTE
+                </div>
+            </div>
+            <div class="row fac_t_letra_gen">
+              <div class="col-6 border ">
+                NOMBRE:
+                <span t-field="o.partner_id.name" />
+                <br />
+                DIRECCIÓN:
+                <span t-field="o.partner_id.display_street" />
+              </div>
+              <div class="col-6 text-right border  fac_t_letra_gen">
+                NIT:
+                <t t-if="o.partner_id.vat">
+                  <span t-field="o.partner_id.vat" />
+                </t>
+                <t t-if="not o.partner_id.vat">
+                  <span>C/F</span>
+                </t>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page">
+
+          <!-- <div class="page" style="height: 427px;">-->
+          <div class="container">
+            <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)" />
+
+            <!-- CON DESCUENTO-->
+            <t t-if="display_discount">
+
+              <div class="row">
+                <div class="col">
+                  <table class="table  fac_t_letra_gen" name="">
+                    <thead class="  py-1">
+                      <tr class="border-0 py-1">
+                        <th name="" class="text-center border-0 py-1">
+                          <span>CANT</span>
+                        </th>
+                        <th name="" class="text-center border-0 py-1">
+                          <span>PRODUCTO</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>P. UNIT</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>DESC</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>TOTAL</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                      <t t-foreach="o.detalle_factura()" t-as="l">
+                        <tr class="border-0 fac_t_letra_gen">
+                        <t t-if="l['price_unit']">
+                          <td class="text-center py-1" name="">
+                            <span t-esc="l['quantity']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-left py-1">
+                            <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-right py-1">
+                            <span t-esc="l['price_unit']" class="border-0 text-wrap text-break" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                          </td>
+                          <td class="text-right py-1">
+                            <span t-esc="l['discount']" class="border-0 text-wrap text-break" />
+                            %
+                          </td>
+                          <td class="text-right py-1">
+                            <span t-esc="l['price_total']" class="border-0 text-wrap text-break" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                          </td>
+                        </t>
+                        <t t-if="not l['price_unit']">
+                          <td class="text-center py-1" name="">
+                            <span></span>
+                          </td>
+                          <td class="text-left py-1">
+                            <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-right py-1">
+                            <span></span>
+                          </td>
+                          <td class="text-right py-1">
+                            <span></span>
+                            %
+                          </td>
+                          <td class="text-right py-1">
+                            <span></span>
+                          </td>
+                        </t>
+                        </tr>
+                      </t>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </t>
+            <!-- SIN DESCUENTO-->
+            <t t-if="not display_discount">
+              <div class="row">
+                <div class="col">
+                  <table class="table fac_t_letra_gen" name="">
+                    <thead class="  py-1">
+                      <tr class="border-0 py-1">
+                        <th name="" class="text-center border-0 py-1">
+                          <span>CANT</span>
+                        </th>
+                        <th name="" class="text-center border-0 py-1">
+                          <span>PRODUCTO</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>P. UNIT</span>
+                        </th>
+                        <th name="" class="text-right border-0 py-1">
+                          <span>TOTAL</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                      <t t-foreach="o.detalle_factura()" t-as="l">
+                        <tr class="border-0 fac_t_letra_gen">
+                          <t t-if="l['price_unit']">
+                            <td class="text-center py-1" name="" style="width: 88px !important;">
+                              <span t-esc="l['quantity']" class="border-0 text-wrap text-break" />
+                            </td>
+                            <td class="text-left py-1" style="width: 566px !important;">
+                              <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                            </td>
+                            <td class="text-right py-1" style="width: 115 !important;">
+                              <span t-esc="l['price_unit']" class="border-0 text-wrap text-break"  t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                            </td>
+                            <td class="text-right py-1" style="width: 116px !important;">
+                              <span t-esc="l['price_total']" class="border-0 text-wrap text-break"  t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                            </td>
+                          </t>
+                        <t t-if="not l['price_unit']">
+                          <td class="text-center py-1" name="" style="width: 88px !important;">
+                            <span> </span>
+                          </td>
+                          <td class="text-left py-1" style="width: 566px !important;">
+                            <span t-esc="l['name']" class="border-0 text-wrap text-break" />
+                          </td>
+                          <td class="text-right py-1" style="width: 115 !important;">
+                            <span> </span>
+                          </td>
+                          <td class="text-right py-1" style="width: 116px !important;">
+                            <span> </span>
+                          </td>
+                        </t>
+                        </tr>
+                      </t>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </t>
+          </div>
+        </div>
+
+        <div class="footer">
+          <link rel="stylesheet" href="/fel/static/src/css/report_fcam.css" />
+          <div class="container">
+            <div class="row">
+              <div class="col-4 text-left"></div>
+              <div class="col-4 text-center">
+                <t t-foreach="o.journal_id.fel_frases_ids" t-as="frase">
+                  <small>
+                    <span t-esc="frase.fel_escenario.texto.upper()" />
+                    <br />
+                  </small>
+                </t>
+              </div>
+              <div class="col-4 text-left"></div>
+            </div>
+            <div class="row fac_t_letra_gen border ">
+              <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)" />
+              <t t-set="total" t-value="o.totales()" />
+
+
+              <t t-if="total['gran_subtotal'] == 0.00">
+                <table class="table table-sm tabla_footer">
+                  <tr>
+                    <td colspan="2" style="width: 73%">
+                      TOTAL EN LETRAS<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><t t-esc="total['gran_total_total_letras']" />
+                    </td>
+                    <td colspan="1" class="text-center " style="width: 14%">TOTAL</td>
+                    <td colspan="1" class="text-right" style="width: 13%">
+                      <span t-esc="total['gran_total_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                    </td>
+                  </tr>
+                </table>
+              </t>
+
+              <t t-if="total['gran_subtotal'] != 0.00">
+                <table class="table table-sm tabla_footer">
+                  <tr>
+                      <td colspan="2" style="width: 67%"></td>
+                      <td class="text-center " style="width: 21%">SUBTOTAL</td>
+                      <td class="text-right" style="width: 12%">
+                        <span t-esc="total['gran_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                      </td>
+                  </tr>
+                    <tr>
+                      <td colspan="2" style="width: 67%">TOTAL EN LETRAS</td>
+                      <td class="text-center " style="width: 21%">DESCUENTO</td>
+                      <td class="text-right" style="width: 12%">
+                        <span t-esc="total['gran_subtotal']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                      </td>
+                    </tr>
+                  <tr>
+                    <td colspan="2" style="width: 67%">
+                      <t t-esc="total['gran_total_total_letras']" />
+                    </td>
+                    <td colspan="1" class="text-center " style="width: 21%">TOTAL</td>
+                    <td colspan="1" class="text-right" style="width: 12%">
+                      <span t-esc="total['gran_total_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id, "precision": 2}'/>
+                    </td>
+                  </tr>
+                </table>
+              </t>
+            </div>
+            <div class="row">
+              <div class="col-10 fac_t_letra_peq">
+                <p>
+                  CONDICIONES GENERALES:
+                  <br />
+                  1. El comprador acepta el valor total que se indica en esta FACTURA CAMBIARIA y se compromete a pagar el mismo en la fecha de vencimiento estipulada en las oficinas del vendedor.
+                  <br />
+                  2. El comprador acepta un recargo del 2.5% en concepto de interés por mora calculado mensualmente.
+                  <br />
+                  3. En caso de incumplimiento el comprador renuncia al fuero de su domicilio y se somete a los tribunales del Departamento de GUATEMALA, señalando para recibir notificaciones citaciones o
+                  emplazamientos la dirección actual de su negocio, salvo aviso que se diera por escrito.
+                  <br />
+                  4. La firma de un representante de cualquier naturaleza, empleado dependiente o transportista del comprador se tiene como, aceptación de esta FACTURA CAMBIARIA, y lo obliga a cumplir
+                  las condiciones estipuladas.
+                  <br />
+                  5. La presente FACTURA CAMBIARIA no se considera cancelada sin el RECIBO DE CAJA correspondiente.
+                </p>
+              </div>
+              <div class="col-2 ">
+                <div class="row">
+                  <div class="col-12 text-center fac_t_letra_peq">
+                    <strong>
+                      <p>
+                        <br />
+                        LA MERCADERIA VIAJA POR CUENTA Y RIESGO DEL COMPRADOR
+                        <br />
+                        <br />
+                        NO SE ACEPTAN DEVOLUCIONES
+                      </p>
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row fac_t_letra_med">
+              <div class="col-3 text-left fac_t_letra_med">
+                <br />
+                CERTIFICADOR:
+                <t t-esc="o.fel_setting_id.proveedor_id.name" />
+                <br />
+                NIT:
+                <t t-esc="o.fel_setting_id.proveedor_id.vat" />
+              </div>
+              <div class="col-4 fac_t_letra_peq">
+                <t t-if="o.journal_id.tipo_documento == 'FCAM'">
+                  <t t-set="total" t-value="o.totales()" />
+                  <br />
+                  NÚMERO DE ABONO: 1
+                  <br />
+                  MONTO DE ABONO:
+                  <span t-esc="total['gran_total_total']" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                  <br />
+                  FECHA DE VENCIMIENTO:
+                  <t t-if="o.invoice_payment_term_id.id == 1">
+                    <t t-esc="o.invoice_date" />
+                  </t>
+                  <t t-if="o.invoice_payment_term_id.id != 1">
+                    <span t-esc="o.invoice_date_due" />
+                  </t>
+                </t>
+              </div>
+              <div class="col-3">
+                <t t-if="o.fel_url">
+                  <center>
+                    <img t-if="o.generate_qr()" t-att-src="'data:image/png;base64,%s' % to_text(o.generate_qr())" class="qr" />
+                    <br />
+                    <span class="fac_t_letra_peq">ESCANEA EL CODIGO QR</span>
+                  </center>
+                </t>
+              </div>
+              <div class="col-2 text-center">
+                <img src="/fel/static/img/FEL.PNG" style="max-height:70px;padding-top: 1px;" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-left fac_t_letra_med">
+                <span class="font-weight: bold">NÚMERO DE AUTORIZACIÓN:<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span>
+                <t t-esc="o.fel_firma" />
+                <span class="font-weight: bold"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>FECHA DE CERTIFICACIÓN:<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]></span>
+                <t t-esc="o.fecha_certificacion" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+
+    <template id="fel.invoice_template">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+          <t t-if="o.journal_id.tipo_documento != 'FCAM'">
+            <t t-call="fel.invoice_denteco" />
+          </t>
+          <t t-if="o.journal_id.tipo_documento == 'FCAM'">
+            <t t-call="fel.invoice_denteco_cam" />
+          </t>
+        </t>
+      </t>
+    </template>
+
+    <record id="carta_denteco" model="report.paperformat">
+      <field name="name">Papel Carta</field>
+      <field name="default" eval="True" />
+      <field name="format">custom</field>
+      <field name="page_height">279</field>
+      <field name="page_width">215</field>
+      <field name="orientation">Portrait</field>
+      <field name="margin_top">85</field>
+      <field name="margin_bottom">88</field>
+      <field name="margin_left">4</field>
+      <field name="margin_right">4</field>
+      <field name="header_line" eval="False" />
+      <field name="header_spacing">85</field>
+      <field name="dpi">90</field>
+    </record>
+
+    <record id="reporte_factura" model="ir.actions.report">
+      <field name="name">Factura Impresion 4</field>
+      <field name="model">account.move</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">fel.invoice_template</field>
+      <field name="report_file">fel.invoice_template</field>
+      <field name="binding_type">report</field>
+      <field name="print_report_name">(object.name)</field>
+      <field name="paperformat_id" ref="carta_denteco"/>
+    </record>
+
+  <record id="reporte_factura_2" model="ir.actions.report">
+      <field name="name">Factura Impresion</field>
+      <field name="model">account.move</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">fel.invoice_template</field>
+      <field name="report_file">fel.invoice_template</field>
+      <field name="binding_type">report</field>
+      <field name="print_report_name">(object.name)</field>
+      <field name="paperformat_id" ref="carta_denteco"/>
+    </record>
+</odoo>

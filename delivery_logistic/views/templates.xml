@@ -1,0 +1,13 @@
+<odoo>
+
+    <data>
+        <template id="assets_backend" name="delivery_logistic_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+<!--            	<script type="text/javascript" src="/xlsx_payroll_report/static/src/js/action_manager.js"/>-->
+            	<script type="text/javascript" src="/delivery_logistic/static/src/js/stock_picking.js"/>
+            	<script type="text/javascript" src="/delivery_logistic/static/src/js/trip.js"/>
+            </xpath>
+        </template>
+    </data>
+
+</odoo>

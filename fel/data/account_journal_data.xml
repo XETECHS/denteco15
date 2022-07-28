@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <data noupdate="0">
+          
+          <!-- DIARIOS --> 
+          <!--<record id="account_journal_01" model="account.journal">
+               <field name="name">Facturas de cliente - FEL</field>
+               <field name="type">sale</field>
+               <field name="company_id" ref="base.main_company"/>
+               <field name="code">FCL</field>
+               <field name="refund_sequence">true</field>
+               <field name="invoice_reference_type">invoice</field>
+               <field name="invoice_reference_model">odoo</field>
+               <field name="tipo_operacion">FACT</field>
+               <field name="tipo_documento">FACT</field>
+               <field name="afiliacion_iva">GEN</field>
+               <field name="invoice_receipt">true</field>
+               <field name="fel_setting_id" ref="fel.configuracion_fel_colegiomaya01"/>
+          </record> -->
+           
+          <record id="account_journal_02" model="account.journal">
+               <field name="name">Nota de credito - FEL</field>
+               <field name="type">sale</field>
+               <field name="company_id" ref="base.main_company"/>
+               <field name="code">NCF</field>
+               <field name="refund_sequence">true</field>
+               <field name="invoice_reference_type">invoice</field>
+               <field name="invoice_reference_model">odoo</field>
+               <field name="tipo_operacion">FACT</field>
+               <field name="tipo_documento">NCRE</field>
+               <field name="afiliacion_iva">GEN</field>
+               <field name="invoice_receipt">true</field>
+               <field name="fel_setting_id" ref="fel.configuracion_fel_colegiomaya01"/>
+          </record>
+           
+          <record id="account_journal_03" model="account.journal">
+               <field name="name">Nota de abono - FEL</field>
+               <field name="type">sale</field>
+               <field name="company_id" ref="base.main_company"/>
+               <field name="code">NAF</field>
+               <field name="refund_sequence">true</field>
+               <field name="invoice_reference_type">invoice</field>
+               <field name="invoice_reference_model">odoo</field>
+               <field name="tipo_operacion">FACT</field>
+               <field name="tipo_documento">NABN</field>
+               <field name="afiliacion_iva">GEN</field>
+               <field name="invoice_receipt">true</field>
+               <field name="fel_setting_id" ref="fel.configuracion_fel_colegiomaya01"/>
+          </record>
+           
+          <record id="account_journal_04" model="account.journal">
+               <field name="name">Facturas cambiarias de cliente local - FEL</field>
+               <field name="type">sale</field>
+               <field name="company_id" ref="base.main_company"/>
+               <field name="code">FCCF</field>
+               <field name="refund_sequence">true</field>
+               <field name="invoice_reference_type">invoice</field>
+               <field name="invoice_reference_model">odoo</field>
+               <field name="tipo_operacion">FACT</field>
+               <field name="tipo_documento">FCAM</field>
+               <field name="afiliacion_iva">GEN</field>
+               <field name="invoice_receipt">true</field>
+               <field name="fel_setting_id" ref="fel.configuracion_fel_colegiomaya01"/>
+          </record>
+           
+          <record id="account_journal_05" model="account.journal">
+               <field name="name">Nota de debito - FEL</field>
+               <field name="type">sale</field>
+               <field name="company_id" ref="base.main_company"/>
+               <field name="code">NDF</field>
+               <field name="refund_sequence">true</field>
+               <field name="invoice_reference_type">invoice</field>
+               <field name="invoice_reference_model">odoo</field>
+               <field name="tipo_operacion">FACT</field>
+               <field name="tipo_documento">NDEB</field>
+               <field name="afiliacion_iva">GEN</field>
+               <field name="invoice_receipt">true</field>
+               <field name="fel_setting_id" ref="fel.configuracion_fel_colegiomaya01"/>
+          </record>
+           
+          <record id="account_journal_06" model="account.journal">
+               <field name="name">Recibo - FEL</field>
+               <field name="type">sale</field>
+               <field name="company_id" ref="base.main_company"/>
+               <field name="code">RF</field>
+               <field name="refund_sequence">true</field>
+               <field name="invoice_reference_type">invoice</field>
+               <field name="invoice_reference_model">odoo</field>
+               <field name="tipo_operacion">FACT</field>
+               <field name="tipo_documento">RECI</field>
+               <field name="afiliacion_iva">GEN</field>
+               <field name="invoice_receipt">false</field>
+               <field name="fel_setting_id" ref="fel.configuracion_fel_colegiomaya01"/>
+          </record>
+           
+          <record id="account_journal_07" model="account.journal">
+               <field name="name">Facturas Especiales - FEL</field>
+               <field name="type">purchase</field>
+               <field name="company_id" ref="base.main_company"/>
+               <field name="code">FEF</field>
+               <field name="refund_sequence">true</field>
+               <field name="tipo_operacion">FACT</field>
+               <field name="tipo_documento">FESP</field>
+               <field name="afiliacion_iva">GEN</field>
+               <field name="invoice_receipt">true</field>
+               <field name="fel_setting_id" ref="fel.configuracion_fel_colegiomaya01"/>
+          </record>
+
+          <!-- FRASES IMPUESTOS -->
+          <!--<record id="account_journal_fel_frases01" model="account.journal.fel.frases">
+               <field name="account_journal_id" ref="account_journal_01"/>
+               <field name="fel_tipofrase">1</field>
+               <field name="fel_escenario">1</field>
+          </record> -->
+           
+          <record id="account_journal_fel_frases02" model="account.journal.fel.frases">
+               <field name="account_journal_id" ref="account_journal_04"/>
+               <field name="fel_tipofrase">1</field>
+               <field name="fel_escenario">1</field>
+          </record>
+     </data>
+</odoo>

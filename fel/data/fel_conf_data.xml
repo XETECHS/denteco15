@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <data noupdate="1">
+          <!-- CONFIGURACION FEL -->
+          <record id="proveedor_infile" model="res.partner">
+               <field name="name">Infile, S.A.</field>
+               <field name="vat">1252133-7</field>
+               <field name="image_1920" type="base64" file="fel/static/img/infile.png"/>
+               <field name="lang">es_GT</field>
+          </record>
+
+           <record id="configuracion_fel_lanueva01" model="fel.setting">
+                <field name="name">3ª CALLE 0-27 ZONA 9 LOCAL B GUATEMALA, GUATEMALA</field>
+                <field name="cod_establecimiento">1</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" ref="base.main_partner"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva02" model="fel.setting">
+                <field name="name">KM. 53.5 LOTE 16 MZ M RESIDENCIALES SAN JOSE SANARATE EL PROGRESO</field>
+                <field name="cod_establecimiento">2</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA DEL NORTE</field>
+                <field name="emisor" search="[('name', '=', 'Tienda BARILLAS'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva03" model="fel.setting">
+                <field name="name">2 CALLE LT. 25 LOTIF. VILLAS ANGELA APTO "A" MANZ. 0 SANTA LUCIA COTZUMALGUAPA, ESCUINTLA</field>
+                <field name="cod_establecimiento">3</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA DEL SUR</field>
+                <field name="emisor" search="[('name', '=', 'Tienda STA LUCIA COTZ'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva04" model="fel.setting">
+                <field name="name">CARRETERA INTERAMERICANA KM. 49.5 EL TEJAR, CHIMALTENANGO</field>
+                <field name="cod_establecimiento">4</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">DISTRIBUIDORA LA NUEVA LID</field>
+                <field name="emisor" search="[('name', '=', 'Tienda CHIMALTENANGO'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva05" model="fel.setting">
+                <field name="name">AV. FRANCISCO ARCHILA 5-59 ZONA 6 SAN BENITO, PETEN</field>
+                <field name="cod_establecimiento">5</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA DE EL PETEN</field>
+                <field name="emisor" search="[('name', '=', 'Tienda SAN BENITO'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva06" model="fel.setting">
+                <field name="name">"0" CALLE 2-01 ZONA 4, SAN JUAN COMALAPA</field>
+                <field name="cod_establecimiento">6</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA DE COMALAPA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda COMALAPA'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva07" model="fel.setting">
+                <field name="name">4A. CALLE "A" 1-40 ZONA 2 POPTUN, PETEN</field>
+                <field name="cod_establecimiento">7</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA DE POPTUN</field>
+                <field name="emisor" search="[('name', '=', 'Tienda POPTUN'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva08" model="fel.setting">
+                <field name="name">KM 254 CARRETERA INTERAMERICANA ALDEA OJECHEJEL HUEHUETENANGO, HUEHUETENANGO</field>
+                <field name="cod_establecimiento">8</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA DE HUEHUETENANGO</field>
+                <field name="emisor" search="[('name', '=', 'Tienda HUEHUETENANGO 1'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva09" model="fel.setting">
+                <field name="name">5A. AVENIDA 2-96 ZONA 1 CHICHICASTENANGO, QUICHE</field>
+                <field name="cod_establecimiento">9</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda CHICHICASTENANGO'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva10" model="fel.setting">
+                <field name="name">KM. 160.8 CARRETERA INTERAMERICANA COLONIA LA PAZ SANTA CRUZ DEL QUICHE, QUICHE</field>
+                <field name="cod_establecimiento">10</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA DEL QUICHE</field>
+                <field name="emisor" search="[('name', '=', 'Tienda QUICHE'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva11" model="fel.setting">
+                <field name="name">1A CALLE 1-58, BARRIO PATACABAJ ZONA 3 TECPAN GUATEMALA, CHIMALTENANGO</field>
+                <field name="cod_establecimiento">11</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">SUPER AHORRON</field>
+                <field name="emisor" search="[('name', '=', 'Tienda TECPAN'),]"/>
+           </record>
+
+          <record id="configuracion_fel_lanueva12" model="fel.setting">
+                <field name="name">4 CALLE 3-00 BARRIO EL GOLFO ZONA 3 GUASTATOYA, EL PROGRESO</field>
+                <field name="cod_establecimiento">12</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">SUPER AHORRON</field>
+                <field name="emisor" search="[('name', '=', 'Tienda GUASTATOYA'),]"/>
+           </record>
+
+          <record id="configuracion_fel_lanueva13" model="fel.setting">
+                <field name="name">BARRIO BUENA VISTA ZONA 0 LA LIBERTAD, PETEN</field>
+                <field name="cod_establecimiento">13</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda LIBERTAD'),]"/>
+          </record>
+
+           <record id="configuracion_fel_lanueva14" model="fel.setting">
+                <field name="name">EL EMBARCADERO Z EMBARCADERO PB ZONA 2 SAN PEDRO LA LAGUNA, SOLOLA</field>
+                <field name="cod_establecimiento">14</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">SUPER AHORRON</field>
+                <field name="emisor" search="[('name', '=', 'Tienda SAN PEDRO LA LAGUNA'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva15" model="fel.setting">
+                <field name="name">0 AVENIDA 2-03 APTO. C ZONA 2 BARRIO SAN LUCAS PALIN, ESCUINTLA</field>
+                <field name="cod_establecimiento">15</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">SUPER AHORRON</field>
+                <field name="emisor" search="[('name', '=', 'Tienda PALIN'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva16" model="fel.setting">
+                <field name="name">CASERÍO PALÍN NO. 8289 ZONA 0, NUEVA SANTA ROSA, SANTA ROSA</field>
+                <field name="cod_establecimiento">16</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA EL GANADERO</field>
+                <field name="emisor" search="[('name', '=', 'Tienda NUEVA STA ROSA'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva17" model="fel.setting">
+                <field name="name">4 CALLE 1-28 ZONA 2 SANARATE, EL PROGRESO</field>
+                <field name="cod_establecimiento">17</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">SUPER AHORRON</field>
+                <field name="emisor" search="[('name', '=', 'Tienda SANARATE II'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva18" model="fel.setting">
+                <field name="name">5A. CALLE LOTE 5 ZONA 1 USPANTAN, QUICHE</field>
+                <field name="cod_establecimiento">18</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">SUPER AHORRON</field>
+                <field name="emisor" search="[('name', '=', 'Tienda USPANTAN'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva19" model="fel.setting">
+                <field name="name">3A. CALLE 2-90 PB ZONA 1, PATZUN, CHIMALTENANGO</field>
+                <field name="cod_establecimiento">19</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda PATZÚN'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva20" model="fel.setting">
+                <field name="name">4 AV. 13-14 COLONIA 1 DE MAYO ZONA 0 LA GOMERA, ESCUINTLA</field>
+                <field name="cod_establecimiento">20</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda LA GOMERA'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva21" model="fel.setting">
+                <field name="name">BARRIO EL CENTRO AREA DE SALUD PB C. ZONA 1, SAYAXCHE, PETEN</field>
+                <field name="cod_establecimiento">21</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">SUPER AHORRON</field>
+                <field name="emisor" search="[('name', '=', 'Tienda SAYAXCHE'),]"/>
+           </record>
+
+          <record id="configuracion_fel_lanueva22" model="fel.setting">
+                <field name="name">9 CALLE 6-18 COLONIA EL BOSQUE ZONA 5 HUEHUETENANGO, HUEHUETENANGO</field>
+                <field name="cod_establecimiento">22</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda HUEHUETENANGO 2'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva23" model="fel.setting">
+                <field name="name">4A AVENIDA PB 5-43 ZONA 1, PATZICIA, CHIMALTENANGO</field>
+                <field name="cod_establecimiento">23</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda PATZICIA'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva24" model="fel.setting">
+                <field name="name">CALLE BARRIO MAGNOLIAS REFERENCIA A 100 MTS DE GASOLINERA SHELL ZONA 0 TACTIC, ALTA VERAPAZ</field>
+                <field name="cod_establecimiento">24</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda TACTIC'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva25" model="fel.setting">
+                <field name="name">CALLE ESTADIO 8045-017 FRUTAL ZONA 2 PANAJACHEL, SOLOLA</field>
+                <field name="cod_establecimiento">25</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda PANAJACHEL'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva27" model="fel.setting">
+                <field name="name">2A CALLE 2-13 ZONA 4 BARILLAS, HUEHUETENANGO</field>
+                <field name="cod_establecimiento">27</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda BARILLAS'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva28" model="fel.setting">
+                <field name="name">6TA CALLE 9095 PB A 25 METROS DE LA CRUZ ROJA ZONA 1 EL ESTOR, IZABAL</field>
+                <field name="cod_establecimiento">28</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda EL ESTOR IZABAL'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva29" model="fel.setting">
+                <field name="name">1A. AVE 2-40, LOTE 43, PLAYA GRANDE ZONA 1, IXCAN, QUICHE</field>
+                <field name="cod_establecimiento">29</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda IXCAN'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva30" model="fel.setting">
+                <field name="name">7 AVENIDA EL CALV ZONA 2 SAN MARTÍN JILOTEPEQUE, CHIMALTENANGO</field>
+                <field name="cod_establecimiento">30</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda SAN MARTIN'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva31" model="fel.setting">
+                <field name="name">ALDEA EL SITIO LA JOYA ZONA 0 PATZUN, CHIMALTENANGO</field>
+                <field name="cod_establecimiento">31</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda PATZUN 2'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva32" model="fel.setting">
+                <field name="name">BARRIO LAS PALMAS ZONA 9 SANTA CATALINA LA TINTA, ALTA VERAPAZ</field>
+                <field name="cod_establecimiento">32</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda LA TINTA'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva33" model="fel.setting">
+                <field name="name">CALZADA GUATEMALA 03-40 ZONA 4 POPTUN, PETEN</field>
+                <field name="cod_establecimiento">33</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda POPTUN 2'),]"/>
+           </record>
+
+           <record id="configuracion_fel_lanueva34" model="fel.setting">
+                <field name="name">CALZADA KAIBIL BALAM CENTRO COMERCIAL SAN RAFAEL EL CAMBOTE ZONA 11 HUEHUETENANGO, HUEHUETENANGO</field>
+                <field name="cod_establecimiento">34</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda HUEHUETENANGO 3'),]"/>
+           </record>
+
+           <!--<record id="configuracion_fel_lanueva35" model="fel.setting">
+                <field name="name">FERRETERIA LA NUEVA</field>
+                <field name="cod_establecimiento">35</field>
+                <field name="proveedor_id" ref="fel.proveedor_infile"/>
+                <field name="usuario">COMECIALDEMO</field>
+                <field name="clave">220377EE948E916FFDAF636C34DE394F</field>
+                <field name="token">84a9d35eab78ccb682e64951893fa854</field>
+                <field name="nombre_comercial">FERRETERIA LA NUEVA</field>
+                <field name="emisor" search="[('name', '=', 'Tienda BARILLAS'),]"/>
+           </record> -->
+     </data>
+</odoo>

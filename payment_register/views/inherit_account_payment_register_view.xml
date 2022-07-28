@@ -1,0 +1,13 @@
+<odoo>
+  <record id="view_account_payment_form_multi_inherited" model="ir.ui.view">
+      <field name="name">Account Payment Form Multi Inherited</field>
+      <field name="model">account.payment.register</field>
+      <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+      <field name="arch" type="xml">
+          <field name="payment_date" position="after">
+              <field name="communication"/>
+              <field name="text_free"/>
+          </field>
+      </field>
+  </record>
+</odoo>
