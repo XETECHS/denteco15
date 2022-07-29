@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Add mass mail campaign to the mail.compose.message form view -->
+    <record model="ir.ui.view" id="email_compose_form_cc">
+        <field name="name">mail.compose.message.inherit</field>
+        <field name="model">mail.compose.message</field>
+        <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='notify']" position="after">
+                <label for="partner_ids" string="CC" attrs="{'invisible': [('is_log', '=', True)]}" groups="base.group_user"/>
+                <div groups="base.group_user" attrs="{'invisible': [('is_log', '=', True)]}">
+                    <span attrs="{'invisible': [('composition_mode', '!=', 'mass_mail')]}">
+                        <strong>Email mass mailing</strong> on
+                        <span attrs="{'invisible': [('use_active_domain', '=', True)]}">the selected records</span>
+                        <span attrs="{'invisible': [('use_active_domain', '=', False)]}">the current search filter</span>.
+                    </span>
+                    <field name="cc_ids" widget="many2many_tags_email" placeholder="Add contacts..." context="{'force_email':True, 'show_email':True}" attrs="{'invisible': [('composition_mode', '!=', 'comment')]}"/>
+                </div>
+                <label for="partner_ids" string="BCC" attrs="{'invisible': [('is_log', '=', True)]}" groups="base.group_user"/>
+                <div groups="base.group_user" attrs="{'invisible': [('is_log', '=', True)]}">
+                    <span attrs="{'invisible': [('composition_mode', '!=', 'mass_mail')]}">
+                        <strong>Email mass mailing</strong> on
+                        <span attrs="{'invisible': [('use_active_domain', '=', True)]}">the selected records</span>
+                        <span attrs="{'invisible': [('use_active_domain', '=', False)]}">the current search filter</span>.
+                    </span>
+                    <field name="bcc_ids" widget="many2many_tags_email" placeholder="Add contacts..." context="{'force_email':True, 'show_email':True}" attrs="{'invisible': [('composition_mode', '!=', 'comment')]}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

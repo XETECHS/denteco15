@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="init_mail_mail_form_bcc" model="ir.ui.view">
+        <field name="name">init.mail.mail.form.bcc</field>
+        <field name="model">mail.mail</field>
+        <field name="inherit_id" ref="mail.view_mail_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email_cc']" position="after">
+                <field name="email_bcc"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
