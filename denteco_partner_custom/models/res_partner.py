@@ -21,16 +21,16 @@ class ResPartnerCategory(models.Model):
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     
-    client_type_id = fields.Many2one('res.partner.client.type', string='Client Type')
-    specialties_id = fields.Many2one('res.partner.specialties', string='Specialties')
-    billing_type = fields.Selection([
-        ('customer', 'Customer'),
-        ('supplier', 'Supplier'),
-        ('user', 'User')
-    ], string='Billing Type')
-    seller_code = fields.Char('Seller Code')
-    category_id = fields.Many2many(compute='_compute_category_id', store=True)
-    sold_annual = fields.Monetary( string='Sold Annual')
+    #client_type_id = fields.Many2one('res.partner.client.type', string='Client Type')
+    #specialties_id = fields.Many2one('res.partner.specialties', string='Specialties')
+    #billing_type = fields.Selection([
+    #    ('customer', 'Customer'),
+    #    ('supplier', 'Supplier'),
+    #    ('user', 'User')
+    #], string='Billing Type')
+    #seller_code = fields.Char('Seller Code')
+    #category_id = fields.Many2many(compute='_compute_category_id', store=True)
+    #sold_annual = fields.Monetary( string='Sold Annual')
     
     @api.depends('sold_annual')
     def _compute_category_id(self):
