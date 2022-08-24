@@ -7,11 +7,19 @@
     'website': "http://www.xetechs.gt",
     'version': '1.0.1',
 
-    'depends': [ 'base', 'sale' ],
+    'depends': [ 
+        'base',
+        'sale',
+        'product'
+    ],
     'data': [
+        'data/ir_cron_data.xml',
+        'data/procduct_category_data.xml',
         'security/ir.model.access.csv',
         'views/res_partner_views.xml',
         'views/res_users_views.xml',
+        'views/account_views.xml',
+        'views/sale_views.xml',
     ]
 }
 

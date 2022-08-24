@@ -1,0 +1,779 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* denteco_routes
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20220708\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-23 20:16+0000\n"
+"PO-Revision-Date: 2022-08-23 20:16+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: denteco_routes
+#: code:addons/denteco_routes/models/sale_route.py:0
+#, python-format
+msgid "%s invoice already has a tracking"
+msgstr ""
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "<i class=\"fa fa-check\"/>Accept &amp; Sign"
+msgstr "<i class=\"fa fa-check\"/>Aceptar &amp; Firmar"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "<i class=\"fa fa-check\"/>Signed"
+msgstr "<i class=\"fa fa-check\"/>Firmado"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_comission_view_form
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_view_form
+msgid ""
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" "
+"title=\"Arrow\"/>"
+msgstr ""
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_form
+msgid ""
+"<span class=\"o_stat_text\">Customer</span>\n"
+"                                <span class=\"o_stat_text\">Preview</span>"
+msgstr ""
+"<span class=\"o_stat_text\">Vista de</span>\n"
+"                                <span class=\"o_stat_text\">Cliente</span>"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "<span>Accepted on the behalf of:</span>"
+msgstr "<span>Aceptado en nombre de:</span>"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "<span>By signing this proposal, I agree to the following terms:</span>"
+msgstr ""
+"<span>Al firmar esta propuesta, acepto los siguientes terminos:</span>"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "<span>For an amount of:</span>"
+msgstr "<span>Por un monto de:</span>"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "<span>Received from:</span>"
+msgstr "<span>Recibido de:</span>"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "Accept Tracking Invoice"
+msgstr "Aceptar Seguimiento de Factura"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_needaction
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_ids
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_exception_decoration
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_state
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_type_icon
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__amount_base
+msgid "Amount Base"
+msgstr "Monto Base"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__amount_rate
+msgid "Amount Rate"
+msgstr "Monto por facturas"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__amount_total
+msgid "Amount Total"
+msgstr "Monto Total"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_attachment_count
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.tracking_line_portal_template
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: denteco_routes
+#: model:ir.actions.act_window,name:denteco_routes.sale_route_comission_rate_action
+msgid "Comission Rate"
+msgstr "Comisión de Ruta"
+
+#. module: denteco_routes
+#: model:ir.ui.menu,name:denteco_routes.sale_route_comission_rate_submenu
+msgid "Comission Rates"
+msgstr "Comisión de Rutas"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_form
+msgid "Comments or Notes..."
+msgstr "Comentarios o Notas"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__comission_rate
+msgid "Commision Rate"
+msgstr "Tarifa de Comisión"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route__create_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__create_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__create_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__create_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__create_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route__create_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__create_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__create_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__create_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__create_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields.selection,name:denteco_routes.selection__sale_route_tracking_line__status__nc
+msgid "Credit Note"
+msgstr "Nota de Crédito"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__currency_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__currency_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__partner_invoice_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_form
+msgid "Customer Sign"
+msgstr "Firma de Cliente"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__partner_street
+msgid "Customer Street"
+msgstr "Calle Cliente"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_comission_view_form
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_view_form
+msgid "Date"
+msgstr "Fecha"
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__signed_on
+msgid "Date of the signature."
+msgstr "Fecha de firma"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route__display_name
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__display_name
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__display_name
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__display_name
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__display_name
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields.selection,name:denteco_routes.selection__sale_route_tracking_invoice__status__done
+#: model:ir.model.fields.selection,name:denteco_routes.selection__sale_route_tracking_line__status__done
+msgid "Done"
+msgstr "Hecho"
+
+#. module: denteco_routes
+#: model:ir.model.fields.selection,name:denteco_routes.selection__sale_route_tracking_invoice__status__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__invoice_date_due
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_search
+msgid "Due Date"
+msgstr "Fecha de Vencimiento"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__date_end
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__date_end
+msgid "End Date"
+msgstr "Fecha final"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_follower_ids
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_partner_ids
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__activity_type_icon
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_comission_view_form
+msgid "Get Done Invoices"
+msgstr "Facturas Hechas"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_form
+msgid "Get Invoice Lines"
+msgstr "Buscar Lineas de Factura"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_view_form
+msgid "Get Invoices"
+msgstr "Buscar Facturas"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_search
+msgid "Group By"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__has_message
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route__id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__id
+msgid "ID"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_exception_icon
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__activity_exception_icon
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__message_needaction
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__message_unread
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__message_needaction
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__message_has_error
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__message_has_sms_error
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__message_has_error
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: denteco_routes
+#: code:addons/denteco_routes/controllers/portal.py:0
+#, python-format
+msgid "Invalid signature data."
+msgstr ""
+
+#. module: denteco_routes
+#: code:addons/denteco_routes/controllers/portal.py:0
+#, python-format
+msgid "Invalid tracking."
+msgstr "Tracking Invalido"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__invoice_line_id
+msgid "Invoice Line"
+msgstr "Linea de Factura"
+
+#. module: denteco_routes
+#: model:ir.actions.act_window,name:denteco_routes.sale_route_tracking_line_action
+#: model:ir.ui.menu,name:denteco_routes.sale_route_tracking_line_submenu
+msgid "Invoice Tracker"
+msgstr "Seguimiento de Factura"
+
+#. module: denteco_routes
+#: code:addons/denteco_routes/models/sale_route.py:0
+#, python-format
+msgid "Invoice already has a tracking"
+msgstr "Esta factura ya tiene un seguimiento"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__invoice_date
+msgid "Invoice/Bill Date"
+msgstr "Fecha de Facturación"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_comission_view_form
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_view_form
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_is_follower
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__is_partial
+msgid "Is Partial"
+msgstr "Es parcial"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route____last_update
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission____last_update
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate____last_update
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking____last_update
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice____last_update
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route__write_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__write_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__write_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__write_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__write_uid
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route__write_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__write_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__write_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__write_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__write_date
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__line_id
+msgid "Line"
+msgstr "Linea"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_main_attachment_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_has_error
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_ids
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__my_activity_date_deadline
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route__name
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__signed_by
+msgid "Name of the person that signed the Tracking."
+msgstr "Nombre de la persona que firmó el seguimiento"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_calendar_event_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_date_deadline
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_summary
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_type_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__notes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_needaction_counter
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_has_error_counter
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__message_needaction_counter
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__message_has_error_counter
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__message_unread_counter
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields.selection,name:denteco_routes.selection__sale_route_tracking_invoice__status__partial
+msgid "Partial"
+msgstr "Parcial"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_search
+msgid "Partials"
+msgstr "Parciales"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__partner_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__partner_id
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_search
+msgid "Partner"
+msgstr "Integrante de Mensajería"
+
+#. module: denteco_routes
+#: model:ir.model.fields.selection,name:denteco_routes.selection__sale_route_tracking_line__status__pending
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__qty_done
+msgid "Qty Done"
+msgstr "Cant. Entregada"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__rate
+msgid "Rate"
+msgstr "Tarifa"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__rate_from
+msgid "Rate from"
+msgstr "Desde"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission_rate__rate_to
+msgid "Rate to"
+msgstr "Hasta"
+
+#. module: denteco_routes
+#: model:ir.model,name:denteco_routes.model_res_partner
+msgid "Res Partner"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__activity_user_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_res_partner__tracking_route_id
+#: model:ir.model.fields,field_description:denteco_routes.field_res_users__tracking_route_id
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__route_id
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_search
+msgid "Route"
+msgstr "Ruta"
+
+#. module: denteco_routes
+#: model:ir.actions.act_window,name:denteco_routes.sale_route_comission_action
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__route_comission_id
+#: model:ir.ui.menu,name:denteco_routes.sale_route_comission_submenu
+msgid "Route Comission"
+msgstr "Comisión Rutas"
+
+#. module: denteco_routes
+#: model:ir.actions.act_window,name:denteco_routes.sale_route_tracking_action
+#: model:ir.ui.menu,name:denteco_routes.route_root_menu
+#: model:ir.ui.menu,name:denteco_routes.sale_route_tracking_submenu
+msgid "Route Tracking"
+msgstr "Seguimiento de Rutas"
+
+#. module: denteco_routes
+#: model:ir.actions.act_window,name:denteco_routes.sale_route_action
+#: model:ir.ui.menu,name:denteco_routes.sale_route_submenu
+msgid "Routes"
+msgstr "Rutas"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_has_sms_error
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model,name:denteco_routes.model_sale_route
+msgid "Sale Route"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model,name:denteco_routes.model_sale_route_comission
+msgid "Sale Route Comission"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model,name:denteco_routes.model_sale_route_comission_rate
+msgid "Sale Route Comission Rate"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model,name:denteco_routes.model_sale_route_tracking
+msgid "Sale Route Tracking"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model,name:denteco_routes.model_sale_route_tracking_invoice
+msgid "Sale Route Tracking Invoice"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model,name:denteco_routes.model_sale_route_tracking_line
+msgid "Sale Route Tracking Line"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: denteco_routes
+#: code:addons/denteco_routes/models/sale_route.py:0
+#, python-format
+msgid "Select a correct range"
+msgstr "Seleccione un rango correcto"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__signature
+msgid "Signature"
+msgstr "Firma"
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__signature
+msgid "Signature received through the portal."
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__signed_by
+msgid "Signed By"
+msgstr "Firmado por"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__signed_on
+msgid "Signed On"
+msgstr "Firmado el"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__date_begin
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__date_begin
+msgid "Start Date"
+msgstr "Fecha de inicio"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_invoice__status
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_search
+msgid "Status"
+msgstr "Estado"
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__activity_state
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_invoice__quantity
+msgid ""
+"The optional quantity expressed by this line, eg: number of product sold. "
+"The quantity is not a legal requirement but is very useful for some reports."
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__amount_total
+msgid "Total"
+msgstr "Total"
+
+#. module: denteco_routes
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_comission_view_form
+msgid "Total Billing"
+msgstr "Total Facturado"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__total_tracking_line
+msgid "Total Lines"
+msgstr "Total Lineas"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__tracking_invoices
+#: model_terms:ir.ui.view,arch_db:denteco_routes.sale_route_tracking_line_view_form
+msgid "Tracking Invoices"
+msgstr "Lineas de Factura"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_comission__tracking_line_ids
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__tracking_line_ids
+msgid "Tracking Line"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__activity_exception_decoration
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_unread
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__message_unread_counter
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking__website_message_ids
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking__website_message_ids
+#: model:ir.model.fields,help:denteco_routes.field_sale_route_tracking_line__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__status
+msgid "status"
+msgstr "Estado"
+
+#. module: denteco_routes
+#: model:ir.model.fields,field_description:denteco_routes.field_sale_route_tracking_line__tracking_id
+msgid "tracking"
+msgstr "Seguimiento"

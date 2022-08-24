@@ -105,6 +105,10 @@ class inherit_sale_order(models.Model):
         check_flag = False
         message = ''
 
+        if self.payment_term_id == self.env.ref("account.account_payment_term_immediate"):
+            res = super(inherit_sale_order, self).action_confirm()
+            return res
+
         # Devuelve true si el usuario pertenece al grupo de Administracion ventas
 
         user_group_manager = self.env.user.has_group('sales_team.group_sale_manager')

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="equipment_denteco" model="product.category">
+            <field name="name">EQUIPO</field>
+        </record>
+
+        <record id="clinical_denteco" model="product.category">
+            <field name="name">CLÍNICA</field>
+        </record>
+
+        <record id="digital_denteco" model="product.category">
+            <field name="name">DIGITAL</field>
+        </record>
+
+        <record id="laboratory_denteco" model="product.category">
+            <field name="name">LABORATORIO</field>
+        </record>
+
+        <record id="spare_parts_denteco" model="product.category">
+            <field name="name">REPUESTO</field>
+        </record>
+    
+    </data>
+    
+
+</odoo>

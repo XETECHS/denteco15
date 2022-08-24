@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_route,access.sale.route,model_sale_route,,1,1,1,1
+access_sale_route_tracking,access.sale.route.tracking,model_sale_route_tracking,,1,1,1,1
+access_sale_route_tracking_line,access.sale.route.tracking.line,model_sale_route_tracking_line,,1,1,1,1
+access_sale_route_tracking_invoice,access.sale.route.tracking.invoice,model_sale_route_tracking_invoice,,1,1,1,1
+access_sale_route_comission,access.sale.route.comission,model_sale_route_comission,,1,1,1,1
+access_sale_route_comission_rate,access.sale.route.comission.rate,model_sale_route_comission_rate,,1,1,1,1

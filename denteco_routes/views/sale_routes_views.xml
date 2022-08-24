@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_route_view_tree" model="ir.ui.view">
+        <field name="name">sale.route.view.tree</field>
+        <field name="model">sale.route</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_route_comission_rate_view_tree" model="ir.ui.view">
+        <field name="name">sale.route.comission.rate.view.tree</field>
+        <field name="model">sale.route.comission.rate</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" />
+                <field name="rate_from" />
+                <field name="rate_to" />
+                <field name="currency_id" invisible="1"/>
+                <field name="rate" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_route_tracking_view_tree" model="ir.ui.view">
+        <field name="name">sale.route.tracking.view.tree</field>
+        <field name="model">sale.route.tracking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_begin"/>
+                <field name="date_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_route_tracking_view_form" model="ir.ui.view">
+        <field name="name">sale.route.tracking.view.form</field>
+        <field name="model">sale.route.tracking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Get Invoices" name="get_invoices" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <label for="date_begin" string="Date"/>
+                        <div class="o_row">
+                            <field name="date_begin" widget="daterange" nolabel="1" class="oe_inline" options="{'related_end_date': 'date_end'}"/>
+                            <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                            <field name="date_end" widget="daterange" nolabel="1" class="oe_inline" options="{'related_start_date': 'date_begin'}"/>
+                        </div>
+                    </group>
+                    <notebook>
+                        <page name="invoices" string="Invoices">
+                            <field name="tracking_line_ids">
+                                <tree editable="1" create="0">
+                                    <field name="invoice_id"/>
+                                    <field name="partner_invoice_id" />
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount_total" />
+                                    <field name="partner_street" />
+                                    <field name="route_id" required="1"/>
+                                    <field name="partner_id" required="1"/>
+                                    <field name="status" readonly="1"/>
+                                    <field name="tracking_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_route_tracking_line_view_tree" model="ir.ui.view">
+        <field name="name">sale.route.tracking.line.view.tree</field>
+        <field name="model">sale.route.tracking.line</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="invoice_id"/>
+                <field name="invoice_date"/>
+                <field name="partner_invoice_id" />
+                <field name="currency_id" invisible="1"/>
+                <field name="amount_total" />
+                <field name="route_id" required="1"/>
+                <field name="partner_id" required="1"/>
+                <field name="status" />
+                <field name="is_partial" invisible="1"/>
+                <field name="tracking_id" invisible="1"/>
+                <field name="invoice_date_due" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_route_tracking_line_view_form" model="ir.ui.view">
+        <field name="name">sale.route.tracking.line.view.form</field>
+        <field name="model">sale.route.tracking.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Get Invoice Lines" name="search_tracking_invoices" type="object" class="oe_highlight"/>
+                    <field name="status" widget="statusbar" clickable="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="preview_tracking_web"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-globe icon">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Customer</span>
+                                <span class="o_stat_text">Preview</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group col="4">
+                        <field name="invoice_id" readonly="1"/>
+                        <field name="partner_invoice_id" />
+                        <field name="invoice_date"/>
+                        <field name="amount_total" />
+                        <field name="route_id" readonly="1"/>
+                        <field name="partner_id" readonly="1"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="is_partial" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page name="notes" string="Notes">
+                            <field name="notes" placeholder="Comments or Notes..."/>
+                        </page>
+                        <page name="customer_sign" string="Customer Sign">
+                            <group>
+                                <field name="signed_by" readonly="1"/>
+                                <field name="signed_on" readonly="1"/>
+                                <field name="signature" widget="image" readonly="1"/>
+                            </group>
+                        </page>
+                        <page name="tracking_invoices" string="Tracking Invoices">
+                            <field name="tracking_invoices" mode="tree">
+                                <tree editable="bottom" create="0">
+                                    <field name="invoice_line_id" invisible="1"/>
+                                    <field name="product_id" />
+                                    <field name="quantity" />
+                                    <field name="qty_done" readonly="0"/>
+                                    <field name="status" />
+                                    <field name="line_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_route_tracking_line_view_search" model="ir.ui.view">
+        <field name="name">sale.route.tracking.line.view.search</field>
+        <field name="model">sale.route.tracking.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="invoice_id"/>
+                <field name="partner_invoice_id" operator="child_of"/>
+                <field name="partner_id"/>
+                <separator/>
+                <filter string="Partials" name="ispartial" domain="[('is_partial', '=', True)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Partner" name="partner" context="{'group_by':'partner_id'}"/>
+                    <filter string="Route" name="route" context="{'group_by': 'route_id'}"/>
+                    <separator/>
+                    <filter name="status" string="Status" context="{'group_by':'status'}"/>
+                    <filter string="Due Date" name="duedate" context="{'group_by': 'invoice_date_due'}"/>
+                </group>  
+            </search>
+        </field>
+    </record>
+
+    <record id="sale_route_comission_view_tree" model="ir.ui.view">
+        <field name="name">sale.route.comission.view.tree</field>
+        <field name="model">sale.route.comission</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_begin"/>
+                <field name="date_end"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_route_comission_view_form" model="ir.ui.view">
+        <field name="name">sale.route.comission.view.form</field>
+        <field name="model">sale.route.comission</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Get Done Invoices" name="get_tracking_lines" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <label for="date_begin" string="Date"/>
+                        <div class="o_row">
+                            <field name="date_begin" widget="daterange" nolabel="1" class="oe_inline" options="{'related_end_date': 'date_end'}"/>
+                            <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                            <field name="date_end" widget="daterange" nolabel="1" class="oe_inline" options="{'related_start_date': 'date_begin'}"/>
+                        </div>
+                        <field name="partner_id" />
+                        <field name="comission_rate" />
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page name="invoices" string="Invoices">
+                            <field name="tracking_line_ids">
+                                <tree editable="1" create="0">
+                                    <field name="invoice_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount_total" sum="Total Billing"/>
+                                    <field name="status" readonly="1"/>
+                                    <field name="tracking_id" invisible="1"/>
+                                </tree>
+                            </field>
+                            <group colspan="4">
+                                <group class="oe_subtotal_footer oe_right" >
+                                    <field name="amount_base" />
+                                    <field name="amount_rate" />
+                                  <field name="amount_total" class="oe_subtotal_footer_separator"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_route_action" model="ir.actions.act_window">
+        <field name="name">Routes</field>
+        <field name="res_model">sale.route</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="sale_route_comission_rate_action" model="ir.actions.act_window">
+        <field name="name">Comission Rate</field>
+        <field name="res_model">sale.route.comission.rate</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="sale_route_tracking_action" model="ir.actions.act_window">
+        <field name="name">Route Tracking</field>
+        <field name="res_model">sale.route.tracking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="sale_route_comission_action" model="ir.actions.act_window">
+        <field name="name">Route Comission</field>
+        <field name="res_model">sale.route.comission</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="sale_route_tracking_line_action" model="ir.actions.act_window">
+        <field name="name">Invoice Tracker</field>
+        <field name="res_model">sale.route.tracking.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="route_root_menu"
+        name="Route Tracking"       
+        parent="stock.menu_stock_root"
+        sequence="10"/>
+
+    <menuitem
+        id="sale_route_tracking_submenu"
+        name="Route Tracking"
+        action="sale_route_tracking_action"
+        parent="route_root_menu"
+        sequence="10"/>
+
+    <menuitem
+        id="sale_route_tracking_line_submenu"
+        name="Invoice Tracker"
+        action="sale_route_tracking_line_action"
+        parent="route_root_menu"
+        sequence="30"/>
+
+        <menuitem
+        id="sale_route_comission_submenu"
+        name="Route Comission"
+        action="sale_route_comission_action"
+        parent="route_root_menu"
+        sequence="40"/>
+
+    <menuitem
+        id="sale_route_submenu"
+        name="Routes"
+        action="sale_route_action"        
+        parent="route_root_menu"
+        sequence="50"/>
+
+    <menuitem
+        id="sale_route_comission_rate_submenu"
+        name="Comission Rates"
+        action="sale_route_comission_rate_action"        
+        parent="route_root_menu"
+        sequence="60"/>
+
+    
+
+</odoo>

@@ -1,0 +1,193 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* denteco_partner_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20220708\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-23 22:09+0000\n"
+"PO-Revision-Date: 2022-08-23 22:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner__billing_type
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_users__billing_type
+msgid "Billing Type"
+msgstr "Tipo de Facturación"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_users__channel_id
+msgid "Canal"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_category__category_from
+msgid "Category from"
+msgstr "Desde"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_category__category_to
+msgid "Category to"
+msgstr "Hasta"
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_res_partner_client_type
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner__client_type_id
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_users__client_type_id
+msgid "Client Type"
+msgstr "Tipo de Cliente"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type__create_uid
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type__create_date
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields.selection,name:denteco_partner_custom.selection__res_partner__billing_type__customer
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type__display_name
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_account_move_line__is_equipment
+msgid "Equipment"
+msgstr "Equipo"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type__id
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties__id
+msgid "ID"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type____last_update
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type__write_uid
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type__write_date
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_client_type__name
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner_specialties__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_res_partner_specialties
+msgid "Partner Specialties"
+msgstr "Especialidades"
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_res_partner_category
+msgid "Partner Tags"
+msgstr "Etiquetas del contacto"
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_res_partner
+msgid "Res Partner"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: denteco_partner_custom
+#: code:addons/denteco_partner_custom/models/res_partner.py:0
+#, python-format
+msgid "Select a correct range"
+msgstr "Selecciona un rango correcto"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_account_bank_statement_line__seller_code
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_account_move__seller_code
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_account_payment__seller_code
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner__seller_code
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_users__seller_code
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_sale_order__seller_code
+msgid "Seller Code"
+msgstr "Código de Vendedor"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner__sold_annual
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_users__sold_annual
+msgid "Sold Annual"
+msgstr "Anual Facturado"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner__specialties_id
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_users__specialties_id
+msgid "Specialties"
+msgstr "Especialidades"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields.selection,name:denteco_partner_custom.selection__res_partner__billing_type__supplier
+msgid "Supplier"
+msgstr "Proveedor"
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_partner__category_id
+#: model:ir.model.fields,field_description:denteco_partner_custom.field_res_users__category_id
+msgid "Tags"
+msgstr "Categorías"
+
+#. module: denteco_partner_custom
+#: model_terms:ir.ui.view,arch_db:denteco_partner_custom.base_view_partner_form_inherit
+msgid "Update Historical"
+msgstr "Actualizar Historico"
+
+#. module: denteco_partner_custom
+#: model:ir.actions.server,name:denteco_partner_custom.update_historical_billing_cron_ir_actions_server
+#: model:ir.cron,cron_name:denteco_partner_custom.update_historical_billing_cron
+#: model:ir.cron,name:denteco_partner_custom.update_historical_billing_cron
+msgid "Update Historical Billing"
+msgstr ""
+
+#. module: denteco_partner_custom
+#: model:ir.model.fields.selection,name:denteco_partner_custom.selection__res_partner__billing_type__user
+msgid "User"
+msgstr "Mensajero"
+
+#. module: denteco_partner_custom
+#: model:ir.model,name:denteco_partner_custom.model_res_users
+msgid "Users"
+msgstr "Usuarios"

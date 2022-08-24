@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_client_type,client.type,model_client_type,base.group_user,1,1,1,1
+access_res_partner_client_type,res.partner.client.type,model_res_partner_client_type,base.group_user,1,1,1,1
+access_res_partner_specialties,res.partner.specialties,model_res_partner_specialties,base.group_user,1,1,1,1

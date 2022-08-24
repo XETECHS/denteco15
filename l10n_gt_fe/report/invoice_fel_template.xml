@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <template id="fel_layout">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+
+            <div class="header">
+                <div class="row">
+                    <div class="col-3 float-left" style="margin-top: 25px;">
+                        <div class="text-center" style="margin-top: 30px;">
+                            <!--<img t-att-src="image_data_uri(doc.company_id.logo)" style="display: block; width:200px; margin-left:90px;"/>-->
+                            <img src="/l10n_gt_fe/static/src/img/logo_final.png" style="width:210px;"/>
+                        </div>
+                    </div>
+                    <div class="col-5 text-center" style="font-size:13px; margin-top: 40px; margin-left: 5px;">
+                        <div style="margin-top: 30px;">
+                            <p><strong><span t-field="doc.company_id.name"/></strong></p>
+                            <p style="margin-top: -1.00em;"><span t-field="doc.company_id.street"/> <span t-field="doc.company_id.street2"/></p>
+                            <p style="margin-top: -1.00em;"><strong><span t-field="doc.company_id.country_id.name"/></strong></p>
+                            <p style="margin-top: -1.00em;"><strong>NIT: </strong><span t-field="doc.company_id.vat"/></p>
+                            <p style="margin-top: -1.00em;">Correo: <span t-field="doc.company_id.email"/></p>
+                        </div>
+                    </div>
+                    <div class="col-4 float-left" style="border:1px solid black; margin-top: 17px; margin-left: -15px;">
+                        <div class="row text-center">
+                            <div class="col-12" style="border-bottom: 1px solid black; padding-top:5px;">
+                              <t t-if="doc.move_type == 'out_refund'">
+                                <p>NOTA DE CRÉDITO</p>
+                              </t>
+                              <t t-else="">
+                                <p>FACTURA ELECTRÓNICA</p>
+                              </t>
+                            </div>
+                        </div>
+                        <div class="text-center" style="font-size:11px;">
+                            <div class="mt-2">
+                                <table class="table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <td class="text-left" style="margin:0px; padding:0px; width:105px;"><strong>Serie:</strong></td>
+                                            <td class="text-left" style="margin:0px; padding:0px;"><span t-field="doc.fe_serie"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left" style="margin:0px; padding:0px; width:105px;"><strong>Numero DTE:</strong></td>
+                                            <td class="text-left" style="margin:0px; padding:0px;"><span t-field="doc.fe_number"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left" style="margin:0px; padding:0px; width:105px;"><strong>Fecha Emisión:</strong></td>
+                                            <td class="text-left" style="margin:0px; padding:0px;"><span t-field="doc.fe_certification_date"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left" style="margin:0px; padding:0px;"><strong>Fecha de la Factura:</strong></td>
+                                            <td class="text-left" style="margin:0px; padding:0px; width:105px;"><span t-field="doc.invoice_date"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left" style="margin:0px; padding:0px;"><strong>No. Interno:</strong></td>
+                                            <td class="text-left" style="margin:0px; padding:0px; width:105px;"><span t-field="doc.name"/></td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-out="0"/>
+            </div>
+        </template>
+
+        <template id="invoice_fel_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="l10n_gt_fe.fel_layout">
+                        <div class="row">
+                            <div class="col-12">
+                                <table width="100%" class="table table-borderless" style="font-size:12px;">
+                                    <thead class="text-center" style="border: 2px solid #144d84; font-size:18pt; color:white; border-radius: 20px; background-color:#144d84;">
+                                        <tr>
+                                            <th colspan="5" style="font-size:12px;">Datos del Cliente</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="margin-top:0px;">
+                                            <td>NOMBRE: <span t-field="doc.partner_id.name"/> </td>
+                                            <td style="margin-top:0px; padding-top:0px;"/>
+                                            <td/>
+                                            <td>NIT:<span t-field="doc.partner_id.vat"/></td>
+                                            <td/>
+                                        </tr>
+                                        <tr style="margin-top:0px; padding-top:0px;">
+                                            <td style="margin-top:0px; padding-top:0px;">DIRECCION:  <span t-field="doc.partner_id.street"/></td>
+                                            <td style="margin-top:0px; padding-top:0px;"/>
+                                            <td/>
+                                            <td/>
+                                            <td/>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-borderless col-12" style="font-size:12px;">
+                                    <thead style="border: 2px solid #144d84; font-size:12px; color:white; border-radius: 20px; background-color:#144d84;">
+                                        <tr>
+                                            <th class="text-center" style="margin:5px; padding:5px;" width="60%">Descripción</th>
+                                            <th class="text-center" style="margin:5px; padding:5px;" width="20%">Cantidad</th>
+                                            <th class="text-center" style="margin:5px; padding:5px;" width="20%">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="med_gen" t-value="0"/>
+                                        <t t-foreach="doc.invoice_line_ids" t-as="jojo">
+                                            <tr>
+                                                <td style="margin:2px; padding:2px;">
+                                                  <t t-if="not jojo.tax_ids" style="color:#5181BD; font-size:13pt;">
+                                                    <t t-set="med_gen" t-value="1"/>
+                                                    *
+                                                  </t>
+                                                  <span t-field="jojo.name"/> <!--span t-field="jojo.product_uom_id"/-->
+                                                </td>
+                                                <td class="text-center" style="margin:2px; padding:2px;"><span t-field="jojo.quantity"/></td>
+                                                <td class="text-center" style="margin:2px; padding:2px;"><span t-field="doc.currency_id.symbol"/> <span t-esc="'{:,.2f}'.format(jojo.price_total)"/></td>
+                                            </tr>
+                                        </t>
+                                        
+                                        <t t-if="med_gen == 1">
+                                          <tr class="text-center">
+                                              <td class="text-center" colspan="6"><span>* Medicamento genérico exento del IVA, según artículo 7 num 15 Ley del IVA</span></td>
+                                          </tr>
+                                        </t>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <template id="invoice_fel_footer_invoice_template">
+                            <div t-attf-class="footer">
+                              
+                                <div class="row">
+                                  
+                                  <div class="col-7 float-left text-center" style="font-size:12px;">
+                                    
+                                    <t t-foreach="doc.fe_phrase_ids" t-as="frase">
+                                        <!--<t t-if="frase.name != 'Sujeto a pagos trimestrales ISR' and frase.name[0:14] != 'Exenta del IVA'">-->
+                                            <tr class="text-center">
+                                                <td class="text-center" colspan="6"><span t-field="frase.name"/><br/></td>
+                                            </tr>
+                                        <!--</t>-->
+                                    </t>
+                                    
+                                  </div>
+                                  
+                                  <div class="col-5 float-left">
+                                      <table class="table table-borderless" style="font-size:12px;">
+                                          <t t-set="tax_totals" t-value="json.loads(doc.tax_totals_json)"/>
+                                        
+                                          <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
+                                              <tr>
+                                                  <td class="text-right">
+                                                    <t t-if="subtotal['name'] == 'Importe libre de impuestos'">
+                                                      <span><strong>Subtotal</strong></span>
+                                                    </t>
+                                                    <t t-else="">
+                                                      <strong t-esc="subtotal['name']"/>
+                                                    </t>
+                                                  </td>
+                              
+                                                  <td class="text-right">
+                                                      <span t-att-class="oe_subtotal_footer_separator" t-esc="subtotal['formatted_amount']"/>
+                                                  </td>
+                                              </tr>
+                              
+                                              <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
+                                              <!--<t t-call="account.tax_groups_totals"/>-->
+                                              
+                                              <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
+                                                  <tr>
+                                                      <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) &gt; 1">
+                                                          <td class="text-right">
+                                                              <span t-esc="amount_by_group['tax_group_name']"/>
+                                                              <span class="text-nowrap"> on
+                                                                  <t t-esc="amount_by_group['formatted_tax_group_base_amount']"/>
+                                                              </span>
+                                                          </td>
+                                                          <td class="text-right o_price_total">
+                                                              <span class="text-nowrap" t-esc="amount_by_group['formatted_tax_group_amount']"/>
+                                                          </td>
+                                                      </t>
+                                                      <t t-else="">
+                                                          <td class="text-right"><span class="text-nowrap" t-esc="amount_by_group['tax_group_name']"/></td>
+                                                          <td class="text-right o_price_total">
+                                                              <span class="text-nowrap" t-esc="amount_by_group['formatted_tax_group_amount']"/>
+                                                          </td>
+                                                      </t>
+                                                  </tr>
+                                              </t>
+                                              
+                                          </t>
+                              
+                                          <!--Total amount with all taxes-->
+                                          <tr class="mt-1">
+                                              <td style="background-color:#144d84; color:white;" class="text-right"><strong>Valor Total</strong></td>
+                                              <td style="background-color:#144d84; color:white;" class="text-right">
+                                                  <span t-esc="tax_totals['formatted_amount_total']"/>
+                                              </td>
+                                          </tr>
+                                      </table>
+                                  </div>
+                                  
+                                </div>
+                        
+                                <div class="row">
+                                    <div class="col-4"/>
+                                    <div class="col-4" style="font-size:13px;">
+                                        <strong>
+                                            <t t-if="doc.currency_id.name == 'USD'">
+                                                Total en Dólares:
+                                            </t>
+                                            <t t-else="">
+                                                Total en Quetzales:
+                                            </t>
+                                        </strong>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-2">
+                                    <div class="col-2"/>
+                                    <div class="col-7 text-right" style="font-size:13px;">
+                                        <span t-esc="doc.get_num2words(doc.amount_total, doc.currency_id.name)"/>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="table table-borderless col-12" style="font-size:12px;">
+                                            <thead style="border: 2px solid #144d84; font-size:12px; color:white; border-radius: 20px; background-color:#144d84;">
+                                                <tr class="text-center">
+                                                    <th width="100%">Datos del Certificador</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="row mt-2">
+                                    <div class="col-12">
+                                        <table width="100%" style="font-size:10px;">
+                                            <tr>
+                                                <td>Forma de Pago: <span t-field="doc.invoice_payment_term_id.name"/></td>
+                                                <td>Asesor: <field name="doc.invoice_user_id.name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left"><span style="font-weight:bold;">No. AUTORIZACION: </span> <span style="font-weight:normal;" t-field="doc.fe_uuid"/></td>
+                                                <td class="text-left"><span style="font-weight:bold;">INFILE, S.A.</span> NIT: 12521337</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-1"/>
+                                </div>
+                        
+                            </div>
+                        </template>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+
+</odoo>
