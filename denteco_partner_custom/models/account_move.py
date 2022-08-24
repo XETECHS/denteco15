@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    seller_code = fields.Char('Seller Code', related="user_id.seller_code")
+    #seller_code = fields.Char('Seller Code', related="user_id.seller_code")
 
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
